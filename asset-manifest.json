@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/bpm-ssg-web-ui/static/css/main.5fc019e8.chunk.css",
+    "main.js": "/bpm-ssg-web-ui/static/js/main.18e4879f.chunk.js",
+    "main.js.map": "/bpm-ssg-web-ui/static/js/main.18e4879f.chunk.js.map",
+    "runtime-main.js": "/bpm-ssg-web-ui/static/js/runtime-main.da98c0f7.js",
+    "runtime-main.js.map": "/bpm-ssg-web-ui/static/js/runtime-main.da98c0f7.js.map",
+    "static/js/2.496b0cfa.chunk.js": "/bpm-ssg-web-ui/static/js/2.496b0cfa.chunk.js",
+    "static/js/2.496b0cfa.chunk.js.map": "/bpm-ssg-web-ui/static/js/2.496b0cfa.chunk.js.map",
+    "static/js/3.7f49fd5e.chunk.js": "/bpm-ssg-web-ui/static/js/3.7f49fd5e.chunk.js",
+    "static/js/3.7f49fd5e.chunk.js.map": "/bpm-ssg-web-ui/static/js/3.7f49fd5e.chunk.js.map",
+    "index.html": "/bpm-ssg-web-ui/index.html",
+    "static/css/main.5fc019e8.chunk.css.map": "/bpm-ssg-web-ui/static/css/main.5fc019e8.chunk.css.map",
+    "static/js/2.496b0cfa.chunk.js.LICENSE.txt": "/bpm-ssg-web-ui/static/js/2.496b0cfa.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/bpm-ssg-web-ui/static/media/NoHUD_Helheim1.c4eefbe1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da98c0f7.js",
+    "static/js/2.496b0cfa.chunk.js",
+    "static/css/main.5fc019e8.chunk.css",
+    "static/js/main.18e4879f.chunk.js"
+  ]
+}
