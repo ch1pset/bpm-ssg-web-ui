@@ -6,18 +6,18 @@ class SeedField extends React.Component {
   static contextType = StateContext;
   constructor(props) {
     super(props);
-    this.state = {text:"Seed"}
+    this.state = {seed:"enter a seed here..."}
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
-    this.setState({text:e.target.value});
+    this.setState({seed:e.target.value});
     this.context.seed = e.target.value;
   }
   render() {
     return (
       <div className="SeedField" styles={styles}>
         <div>
-          <input onChange={this.handleChange} value={this.context.seed}/>
+          <input onChange={this.handleChange} placeholder={this.state.seed}/>
         </div>
       </div>
     );
