@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+.Title {
+  color: darkred;
+  background-color: black;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.field {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.Button {
+  padding-top: 10px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

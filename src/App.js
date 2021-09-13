@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import Characters from './components/dropdowns/characters';
+import Difficulties from './components/dropdowns/difficulties';
+import SeedField from './components/seed/seedfield';
+import GenerateButton from './components/generate/generate';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="Title">
+          <h1>BPM Seeded Save Generator</h1>
+        </div>
+        <div className="field">
+          <Characters />
+        </div>
+        <div className="field">
+          <Difficulties />
+        </div>
+        <div className="field">
+          <SeedField />
+        </div>
+        <div className="Button">
+          <GenerateButton/>
+        </div>
     </div>
-  );
+  )
 }
 
 export default App;

@@ -1,0 +1,22 @@
+.gen {
+    font-size: 2.0rem;
+    font-family: monospace;
+    font-weight: bolder;
+    color: darkred;
+    background-color: white;
+    border-radius: 1.0rem;
+    border-style:solid;
+    border-color: black;
+    border-width: 0.2rem;
+}
+.gen:hover {
+    font-size: 2.0rem;
+    font-family: monospace;
+    font-weight: bolder;
+    color: white;
+    background-color: darkred;
+    border-radius: 1.0rem;
+    border-style:solid;
+    border-color: black;
+    border-width: 0.2rem;
+}

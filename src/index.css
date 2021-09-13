@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  background-image: url('./NoHUD_Helheim1.png');
+  background-repeat: no-repeat;
+  background-size:90%;
+  background-position-x: center;
 }
 
 code {
