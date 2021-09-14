@@ -5,6 +5,7 @@ import SeedField from './components/seed/seedfield';
 import GenerateButton from './components/generate/generate';
 import Options from './components/checkboxes/options';
 import './App.css';
+import VersionInfo from './components/version/version';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </div>
         <div className="Button">
           <GenerateButton/>
+        </div>
+        <div>
+          <VersionInfo/>
         </div>
     </div>
   )
