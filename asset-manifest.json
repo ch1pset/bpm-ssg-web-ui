@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/bpm-ssg-web-ui/static/css/main.5fc019e8.chunk.css",
-    "main.js": "/bpm-ssg-web-ui/static/js/main.1ec83e57.chunk.js",
-    "main.js.map": "/bpm-ssg-web-ui/static/js/main.1ec83e57.chunk.js.map",
-    "runtime-main.js": "/bpm-ssg-web-ui/static/js/runtime-main.9ef0bbf0.js",
-    "runtime-main.js.map": "/bpm-ssg-web-ui/static/js/runtime-main.9ef0bbf0.js.map",
-    "static/js/2.efb8d448.chunk.js": "/bpm-ssg-web-ui/static/js/2.efb8d448.chunk.js",
-    "static/js/2.efb8d448.chunk.js.map": "/bpm-ssg-web-ui/static/js/2.efb8d448.chunk.js.map",
-    "static/js/3.dad7c9a3.chunk.js": "/bpm-ssg-web-ui/static/js/3.dad7c9a3.chunk.js",
-    "static/js/3.dad7c9a3.chunk.js.map": "/bpm-ssg-web-ui/static/js/3.dad7c9a3.chunk.js.map",
+    "main.css": "/bpm-ssg-web-ui/static/css/main.441214dd.chunk.css",
+    "main.js": "/bpm-ssg-web-ui/static/js/main.b8e5dce8.chunk.js",
+    "main.js.map": "/bpm-ssg-web-ui/static/js/main.b8e5dce8.chunk.js.map",
+    "runtime-main.js": "/bpm-ssg-web-ui/static/js/runtime-main.c55f9406.js",
+    "runtime-main.js.map": "/bpm-ssg-web-ui/static/js/runtime-main.c55f9406.js.map",
+    "static/js/2.1b3c5bfe.chunk.js": "/bpm-ssg-web-ui/static/js/2.1b3c5bfe.chunk.js",
+    "static/js/2.1b3c5bfe.chunk.js.map": "/bpm-ssg-web-ui/static/js/2.1b3c5bfe.chunk.js.map",
+    "static/js/3.78fca9fa.chunk.js": "/bpm-ssg-web-ui/static/js/3.78fca9fa.chunk.js",
+    "static/js/3.78fca9fa.chunk.js.map": "/bpm-ssg-web-ui/static/js/3.78fca9fa.chunk.js.map",
     "index.html": "/bpm-ssg-web-ui/index.html",
-    "static/css/main.5fc019e8.chunk.css.map": "/bpm-ssg-web-ui/static/css/main.5fc019e8.chunk.css.map",
-    "static/js/2.efb8d448.chunk.js.LICENSE.txt": "/bpm-ssg-web-ui/static/js/2.efb8d448.chunk.js.LICENSE.txt",
+    "static/css/main.441214dd.chunk.css.map": "/bpm-ssg-web-ui/static/css/main.441214dd.chunk.css.map",
+    "static/js/2.1b3c5bfe.chunk.js.LICENSE.txt": "/bpm-ssg-web-ui/static/js/2.1b3c5bfe.chunk.js.LICENSE.txt",
     "static/media/index.css": "/bpm-ssg-web-ui/static/media/NoHUD_Helheim1.c4eefbe1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.9ef0bbf0.js",
-    "static/js/2.efb8d448.chunk.js",
-    "static/css/main.5fc019e8.chunk.css",
-    "static/js/main.1ec83e57.chunk.js"
+    "static/js/runtime-main.c55f9406.js",
+    "static/js/2.1b3c5bfe.chunk.js",
+    "static/css/main.441214dd.chunk.css",
+    "static/js/main.b8e5dce8.chunk.js"
   ]
 }
