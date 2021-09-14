@@ -4,7 +4,7 @@
     color: darkred;
     padding-bottom: 1.2rem;
 }
-input {
+.Field {
     font-size: 1.5rem;
     color: darkred;
     align-content: center;
@@ -21,4 +21,6 @@ input {
 label {
     font-size: 1.5rem;
     text-align: center;
+    color: white;
+    padding-left: 0.5rem;
 }

@@ -17,7 +17,10 @@ class SeedField extends React.Component {
     return (
       <div className="SeedField" styles={styles}>
         <div>
-          <input onChange={this.handleChange} placeholder={this.state.seed} value={this.context.seed}/>
+          <input onChange={this.handleChange} 
+                placeholder={this.state.seed} 
+                value={this.context.seed}
+                className="Field"/>
         </div>
       </div>
     );
