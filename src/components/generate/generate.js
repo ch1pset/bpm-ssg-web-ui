@@ -8,8 +8,7 @@ class GenerateButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url:null,
-      filename:""
+      url:null
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -17,16 +16,12 @@ class GenerateButton extends React.Component {
       if(this.context.seed !== "" && this.context.char !== "" && this.context.diff !== "") {
         console.log(`Generating save for ${JSON.stringify(this.context)}`)
         let savedata = [bpmssg(this.context).serialize()];
-        let filename = `ContinueStateV2.sav`;
-        let file = new File(savedata, filename);
+        let file = new File(savedata, 'ContinueStateV2.sav');
         let url = URL.createObjectURL(file);
-        this.setState({url,filename}, () => {
+        this.setState({url}, () => {
           this.dofileDownload.click();
           URL.revokeObjectURL(url);
-          url = null;
-          file = null;
-          filename = "";
-          this.setState({url,filename}, () => window.location.reload(false))
+          this.setState({url:null})
         })
       } else {
         window.alert(`All fields must be chosen/filled`);
@@ -38,7 +33,7 @@ class GenerateButton extends React.Component {
       <div className="Button" style={styles}>
           <button className="gen" onClick={this.handleClick}>Generate</button>
           <a style={{display: "none"}}
-              download={this.state.filename}
+              download='ContinueStateV2.sav'
               href={this.state.url}
               ref={e=>this.dofileDownload = e}
           >download</a>
