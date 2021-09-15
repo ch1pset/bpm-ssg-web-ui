@@ -31,7 +31,7 @@ class GenerateButton extends React.Component {
   render() {
     return (
       <div className="Button" style={styles}>
-          <button className="gen" onClick={this.handleClick}>Generate</button>
+          <button className="gen" onClick={this.handleClick}>Generate Save</button>
           <a style={{display: "none"}}
               download='ContinueStateV2.sav'
               href={this.state.url}
