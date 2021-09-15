@@ -8,6 +8,19 @@
     font-size: 1.5rem;
     color: darkred;
     align-content: center;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+}
+.button:active {
+    font-size: 1.5rem;
+    color: white;
+    align-content: center;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+    background-color: darkred;
 }
 .label {
     background-color: white;
