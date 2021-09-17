@@ -1,0 +1,25 @@
+.checkbox {
+    background-color: white;
+    width: 2vh;
+    height: 2vh;
+    border-color: white;
+    border-style: solid;
+    border-width: 0.4vh;
+    transform: translate(0px, -0.6vh);
+}
+.checkbox-active {
+    background-color:darkred;
+    width: 2vh;
+    height: 2vh;
+    border-color: white;
+    border-style: solid;
+    border-width: 0.4vh;
+    transform: translate(0px, -0.6vh);
+}
+.label {
+    font-family: Norse;
+    font-size: 2vh;
+    color: white;
+    margin-left: 1.5vh;
+    margin-right: 1.5vh;
+}
