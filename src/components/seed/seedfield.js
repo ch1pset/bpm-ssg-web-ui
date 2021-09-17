@@ -11,7 +11,7 @@ class SeedField extends React.Component {
   }
   handleChange(e) {
     this.setState({seed:e.target.value}, () => {
-      this.props.onChange(this.state);
+      this.props.onChange(this);
     });
   }
   handleClick(e) {
