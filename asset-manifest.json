@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bpm-ssg-web-ui/static/css/main.1ae290b7.chunk.css",
-    "main.js": "/bpm-ssg-web-ui/static/js/main.8b966129.chunk.js",
-    "main.js.map": "/bpm-ssg-web-ui/static/js/main.8b966129.chunk.js.map",
+    "main.js": "/bpm-ssg-web-ui/static/js/main.ba8cf3aa.chunk.js",
+    "main.js.map": "/bpm-ssg-web-ui/static/js/main.ba8cf3aa.chunk.js.map",
     "runtime-main.js": "/bpm-ssg-web-ui/static/js/runtime-main.749c326f.js",
     "runtime-main.js.map": "/bpm-ssg-web-ui/static/js/runtime-main.749c326f.js.map",
     "static/js/2.3a62f973.chunk.js": "/bpm-ssg-web-ui/static/js/2.3a62f973.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.749c326f.js",
     "static/js/2.3a62f973.chunk.js",
     "static/css/main.1ae290b7.chunk.css",
-    "static/js/main.8b966129.chunk.js"
+    "static/js/main.ba8cf3aa.chunk.js"
   ]
 }
