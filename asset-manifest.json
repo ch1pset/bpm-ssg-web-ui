@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/bpm-ssg-web-ui/static/css/main.a776b351.chunk.css",
-    "main.js": "/bpm-ssg-web-ui/static/js/main.060d40e5.chunk.js",
-    "main.js.map": "/bpm-ssg-web-ui/static/js/main.060d40e5.chunk.js.map",
-    "runtime-main.js": "/bpm-ssg-web-ui/static/js/runtime-main.da98c0f7.js",
-    "runtime-main.js.map": "/bpm-ssg-web-ui/static/js/runtime-main.da98c0f7.js.map",
-    "static/js/2.f7c71033.chunk.js": "/bpm-ssg-web-ui/static/js/2.f7c71033.chunk.js",
-    "static/js/2.f7c71033.chunk.js.map": "/bpm-ssg-web-ui/static/js/2.f7c71033.chunk.js.map",
-    "static/js/3.7f49fd5e.chunk.js": "/bpm-ssg-web-ui/static/js/3.7f49fd5e.chunk.js",
-    "static/js/3.7f49fd5e.chunk.js.map": "/bpm-ssg-web-ui/static/js/3.7f49fd5e.chunk.js.map",
+    "main.css": "/bpm-ssg-web-ui/static/css/main.1ae290b7.chunk.css",
+    "main.js": "/bpm-ssg-web-ui/static/js/main.8b966129.chunk.js",
+    "main.js.map": "/bpm-ssg-web-ui/static/js/main.8b966129.chunk.js.map",
+    "runtime-main.js": "/bpm-ssg-web-ui/static/js/runtime-main.749c326f.js",
+    "runtime-main.js.map": "/bpm-ssg-web-ui/static/js/runtime-main.749c326f.js.map",
+    "static/js/2.3a62f973.chunk.js": "/bpm-ssg-web-ui/static/js/2.3a62f973.chunk.js",
+    "static/js/2.3a62f973.chunk.js.map": "/bpm-ssg-web-ui/static/js/2.3a62f973.chunk.js.map",
+    "static/js/3.15e16fe0.chunk.js": "/bpm-ssg-web-ui/static/js/3.15e16fe0.chunk.js",
+    "static/js/3.15e16fe0.chunk.js.map": "/bpm-ssg-web-ui/static/js/3.15e16fe0.chunk.js.map",
     "index.html": "/bpm-ssg-web-ui/index.html",
-    "static/css/main.a776b351.chunk.css.map": "/bpm-ssg-web-ui/static/css/main.a776b351.chunk.css.map",
-    "static/js/2.f7c71033.chunk.js.LICENSE.txt": "/bpm-ssg-web-ui/static/js/2.f7c71033.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/bpm-ssg-web-ui/static/media/NoHUD_Helheim1.c4eefbe1.png"
+    "static/css/main.1ae290b7.chunk.css.map": "/bpm-ssg-web-ui/static/css/main.1ae290b7.chunk.css.map",
+    "static/js/2.3a62f973.chunk.js.LICENSE.txt": "/bpm-ssg-web-ui/static/js/2.3a62f973.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/bpm-ssg-web-ui/static/media/NoHUD_Helheim1.c4eefbe1.png",
+    "static/media/App.css": "/bpm-ssg-web-ui/static/media/Norse.7b3376da.svg",
+    "static/media/bpm_logo_1x1.96a7124c.png": "/bpm-ssg-web-ui/static/media/bpm_logo_1x1.96a7124c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.da98c0f7.js",
-    "static/js/2.f7c71033.chunk.js",
-    "static/css/main.a776b351.chunk.css",
-    "static/js/main.060d40e5.chunk.js"
+    "static/js/runtime-main.749c326f.js",
+    "static/js/2.3a62f973.chunk.js",
+    "static/css/main.1ae290b7.chunk.css",
+    "static/js/main.8b966129.chunk.js"
   ]
 }
