@@ -6,10 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: black;
-  background-image: url('./NoHUD_Helheim1.png');
+  background-image: url('./media/NoHUD_Helheim1.png');
   background-repeat: no-repeat;
-  background-size:90%;
+  background-size: 200vh;
   background-position-x: center;
+  display: flex;
+  justify-content: center;
 }
 
 code {
