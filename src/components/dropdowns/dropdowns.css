@@ -1,5 +1,7 @@
-select {
-    font-size: 1.2rem;
+.Dropdown {
+    font-size: 2vh;
+    font-family: Norse;
+    font-weight: bold;
     color: darkred;
     background-color: white;
     border-color: black;
