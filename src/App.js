@@ -1,39 +1,17 @@
-import Characters from './components/dropdowns/characters';
-import Difficulties from './components/dropdowns/difficulties';
-import StartingFloor from './components/dropdowns/startingfloor';
-import SeedField from './components/seed/seedfield';
-import GenerateButton from './components/generate/generate';
-import Options from './components/checkboxes/options';
+import SSG from './components/ssg/ssg'
+import bpm_logo from './media/bpm_logo_1x1.png'
 import './App.css';
-import VersionInfo from './components/version/version';
 
 function App() {
   return (
     <div className="App">
-        <div className="Title">
-          <h1>BPM Seeded Save Generator</h1>
-        </div>
-        <div className="field">
-          <Characters />
-        </div>
-        <div className="field">
-          <Difficulties />
-        </div>
-        <div className="field">
-          <StartingFloor />
-        </div>
-        <div className="field">
-          <SeedField />
-        </div>
-        <div className="field">
-          <Options/>
-        </div>
-        <div className="Button">
-          <GenerateButton/>
-        </div>
-        <div>
-          <VersionInfo/>
-        </div>
+      <div>
+        <img className="logo" src={bpm_logo} alt="BPM: Bullets Per Minute logo"/>
+        <p className="Title">Seeded Save Generator</p>
+      </div>
+      <div>
+        <SSG />
+      </div>
     </div>
   )
 }

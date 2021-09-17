@@ -1,35 +1,35 @@
+@font-face {
+  font-family: 'Norse';
+  src: url(./fonts/Norse.woff),
+      url(./fonts/Norse.svg),
+      url(./fonts/Norse.ttf);
+}
+
 .App {
   text-align: center;
+  width: fit-content;
+}
+
+.ssg-opts {
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  margin-top: 2vh;
+  height: 10vh;
 }
 
 .Title {
-  color: darkred;
-  background-color: black;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.field {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.Button {
-  padding-top: 10px;
+  color: white;
+  font-size: 4vh;
+  font-family:Norse;
+  font-weight: bolder;
+  padding-bottom: 1.5vh;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -45,13 +45,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
