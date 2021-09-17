@@ -7,15 +7,18 @@ class Dropdown extends React.Component {
         this.state = {selection:""}
         this.handleChange = this.handleChange.bind(this);
     }
+    valid() {
+        return this.state.selection !== "";
+    }
     handleChange(e) {
         console.log(`Selected ${e.target.value}`)
-        this.setState({selection:e.target.value}, () => {
-            this.props.onChange(this);
-        })
+        this.setState({
+            selection:e.target.value
+        }, () => this.props.onChange(this));
     }
     createOptions() {
         return this.props.options.map((opt, i) => {
-            return <option key={i} value={opt}>{opt}</option>
+            return <option className="dropdown-option" key={i} value={opt}>{opt}</option>
         });
     }
     render() {

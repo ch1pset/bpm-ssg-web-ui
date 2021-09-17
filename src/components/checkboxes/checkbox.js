@@ -8,9 +8,9 @@ class Checkbox extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(e) {
-        this.setState({checked:!this.state.checked}, () => {
-            this.props.onChange(this);
-        })
+        this.setState({
+            checked:!this.state.checked
+        }, () => this.props.onChange(this));
     }
     render() {
         return (

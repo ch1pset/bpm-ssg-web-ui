@@ -10,15 +10,19 @@ class SeedField extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleChange(e) {
-    this.setState({seed:e.target.value}, () => {
-      this.props.onChange(this);
-    });
+    this.setState({
+      seed:e.target.value
+    }, () => this.props.onChange(this));
   }
   handleClick(e) {
-    this.setState({seed:this.genSeed(Date.now())}, () => {
-      this.setState({seed:this.state.seed});
+    this.setState({
+      seed:this.genSeed(Date.now())
+    }, () => {
+      this.setState({
+        seed:this.state.seed
+      });
       this.props.onChange(this);
-    })
+    });
   }
   genSeed(seed)
   {

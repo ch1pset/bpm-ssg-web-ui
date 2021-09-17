@@ -37,16 +37,18 @@ class SSG extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
     handleChange(e) {
+        const isComponent = (name) => e.props.name === name;
+        const getFloorIndex = (floor) => FLOORS.find(([f, i]) => f === floor)[1];
         let seed = e.state.seed;
         let sel = e.state.selection;
         let opt = e.state.checked;
         this.setState({
-            seed:(e.props.name === "Seed" ? seed : this.state.seed),
-            char:(e.props.name === "Character" ? sel : this.state.char),
-            diff:(e.props.name === "Difficulty" ? sel : this.state.diff),
+            seed:(isComponent('Seed') ? seed : this.state.seed),
+            char:(isComponent('Character') ? sel : this.state.char),
+            diff:(isComponent('Difficulty') ? sel : this.state.diff),
             opts:{
-                FLOORINDEX:(e.props.name === "Floor" ? FLOORS.find(([f, i]) => f === sel)[1] : this.state.opts.FLOORINDEX),
-                ENHANCE:(e.props.name === "Enhance" ? opt : this.state.opts.ENHANCE)
+                FLOORINDEX:(isComponent('Floor') && e.valid() ? getFloorIndex(sel) : this.state.opts.FLOORINDEX),
+                ENHANCE:(isComponent('Enhance') ? opt : this.state.opts.ENHANCE)
             }
         }, () => console.log(this.state));
     }
@@ -101,7 +103,7 @@ class SSG extends React.Component {
                         onChange={this.handleChange}/>
                 </div>
                 <div className="ssg-gen">
-                    <DownloadButton onClick={this.handleClick}/>
+                    <DownloadButton onClick={this.handleClick} label="Generate Save"/>
                 </div>
                 <div>
                     <VersionInfo/>

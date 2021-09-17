@@ -14,26 +14,29 @@ class DownloadButton extends React.Component {
     this.props.onClick(this);
   }
   activateDownload(e) {
-    let data = [e.data];
-    let filename = e.filename;
-    let file = new File(data, filename);
+    let file = new File([e.data], e.filename);
     let url = URL.createObjectURL(file);
-    this.setState({url, filename}, () => 
-    {
+    this.setState({
+      url, 
+      filename:e.filename
+    }, () => {
       this.dofileDownload.click();
       URL.revokeObjectURL(url);
-      this.setState({url:null,filename:""})
-    })
+      this.setState({
+        url:null,
+        filename:""
+      });
+    });
   }
   render() {
     return (
       <div className="Button" style={styles}>
-          <button className="gen" onClick={this.handleClick}>Generate Save</button>
+          <button className="gen" onClick={this.handleClick}>{this.props.label}</button>
           <a style={{display: "none"}}
               download={this.state.filename}
               href={this.state.url}
-              ref={e=>this.dofileDownload = e}
-          >download</a>
+              ref={e=>this.dofileDownload = e}>
+          </a>
       </div>
     );
   }
