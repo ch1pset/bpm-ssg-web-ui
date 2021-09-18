@@ -3,7 +3,7 @@ import SeedField from '../seed/seedfield';
 import DownloadButton from '../download/download';
 import VersionInfo from '../version/version';
 import styles from './ssg.css';
-import {bpmssg} from 'bpm-ssg'
+import bpmssg from 'bpm-ssg'
 import Dropdown from '../dropdowns/dropdown';
 import Checkbox from '../checkboxes/checkbox';
 
