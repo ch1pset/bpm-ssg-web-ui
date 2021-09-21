@@ -8,6 +8,7 @@ body {
   background-color: black;
   background-image: url('./media/NoHUD_Helheim1.png');
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: 200vh;
   background-position-x: center;
   display: flex;
