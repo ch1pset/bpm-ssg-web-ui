@@ -1,5 +1,31 @@
-#version {
+.version {
     font-size: 2vh;
-    text-align: center;
+    text-align: left;
     color: white;
+    width: 100vh;
+}
+.version:hover {
+    font-size: 2vh;
+    text-align: left;
+    color: darkred;
+    width: 100vh;
+}
+
+.info {
+    display: none;
+}
+.info-active {
+    font-size: 2vh;
+    text-align: left;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-style: solid;
+    border-radius: 2vh;
+    padding: 2vh;
+    margin-top: 4vh;
+    width: 50vw;
+}
+
+.info-active h1, p a  {
+    color: darkred;
 }
