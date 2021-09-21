@@ -3,9 +3,10 @@ import SeedField from '../seed/seedfield';
 import DownloadButton from '../download/download';
 import VersionInfo from '../version/version';
 import styles from './ssg.css';
-import bpmssg from 'bpm-ssg'
 import Dropdown from '../dropdowns/dropdown';
 import Checkbox from '../checkboxes/checkbox';
+import application from '../../../package.json'
+import bpmssg from 'bpm-ssg'
 
 const CHARACTERS = [
     "Goll", "Freyr", "Hildr", "Njord", "Odr",
@@ -106,7 +107,7 @@ class SSG extends React.Component {
                     <DownloadButton onClick={this.handleClick} label="Generate Save"/>
                 </div>
                 <div>
-                    <VersionInfo/>
+                    <VersionInfo value={application.version}/>
                 </div>
             </div>
         )
