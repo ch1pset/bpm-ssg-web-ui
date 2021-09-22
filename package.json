@@ -1,5 +1,5 @@
 {
-  "homepage": "https://ch1pset.github.io/bpm-ssg-web-ui",
+  "homepage": ".",
   "proxy": "https://pastebin.com/",
   "name": "bpm-ssg-web-ui",
   "version": "0.1.6",
