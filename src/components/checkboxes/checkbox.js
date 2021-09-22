@@ -14,11 +14,14 @@ class Checkbox extends React.Component {
     }
     render() {
         return (
-            <div style={Styles}>
-                <button className={`checkbox${this.state.checked ? '-active' : ''}`} 
-                        onClick={this.handleClick} 
-                        checked={this.state.checked}/>
-                <label className="label">{this.props.label}</label>
+            <div className="checkbox-container" style={Styles}>
+                <div className={`checkbox${this.state.checked ? '-active' : ''}`} 
+                    onClick={this.handleClick} 
+                    checked={this.state.checked}/>
+                <div className="label"
+                    onClick={this.handleClick}>
+                        {this.props.label}
+                </div>
             </div>
           )
     }
