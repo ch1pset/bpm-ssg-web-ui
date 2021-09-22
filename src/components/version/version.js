@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './version.css';
 import ReactMarkdown from 'react-markdown';
-import API from '../../api/api';
+import API from '../../api';
 
 const changelogId = 'af22f4d07c0720cd7cceb3d41d8fdd73'
 
