@@ -34,15 +34,15 @@ class SeedField extends React.Component {
   }
   render() {
     return (
-      <div styles={styles}>
+      <div className="seedfield" styles={styles}>
           <input onChange={this.handleChange} 
                 placeholder="enter a seed here..."
                 value={this.state.seed}
                 className="Field"/>
-          <button className="button" 
+          <div className="button" 
               style={styles} 
               onClick={this.handleClick}
-              >Random</button>
+              >Random</div>
       </div>
     );
   }

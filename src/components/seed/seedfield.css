@@ -1,5 +1,5 @@
-.SeedField {
-    color: darkred;
+.seedfield {
+    display:flex;
 }
 .Field {
     font-family: monospace;
@@ -11,10 +11,13 @@
     border-style: solid;
     border-width: 1px;
     background-color: white;
+    padding-top: 0.25vh;
+    padding-bottom: 0.25vh;
 }
 .button {
+    cursor:default;
+    user-select: none;
     font-family: Norse;
-    height: 3.3vh;
     font-size: 2.5vh;
     font-weight: bold;
     color: darkred;
@@ -23,18 +26,12 @@
     border-style: solid;
     border-width: 1px;
     background-color: white;
-    transform: translate(0vh, 0.3vh);
+    padding-left: 1vh;
+    padding-right: 1vh;
+    padding-top: 0.3vh;
 }
 .button:active {
-    font-family: Norse;
-    font-size: 2.5vh;
-    font-weight: bold;
-    height: 3.3vh;
     color: white;
     align-content: center;
-    border: black;
-    border-style: solid;
-    border-width: 1px;
     background-color: darkred;
-    transform: translate(0vh, 0.3vh);
 }
