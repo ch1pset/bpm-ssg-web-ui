@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './version.css';
 import ReactMarkdown from 'react-markdown';
+import API from '../../api/api';
 
-const devMode = process.env.NODE_ENV === 'development';
+const changelogId = 'af22f4d07c0720cd7cceb3d41d8fdd73'
 
 class VersionInfo extends React.Component {
   constructor(props) {
@@ -11,10 +12,10 @@ class VersionInfo extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    fetch(devMode ? 'raw/4FKhJjW7' : 'https://pastebin.com/raw/4FKhJjW7')
+    fetch(`${API.gist}/${changelogId}`)
         .then(r => r.text())
         .then(text => {
-          this.update(text, false);
+          this.update(JSON.parse(text).files['changelog.md'].content, false);
         })
   }
   handleClick(e) {

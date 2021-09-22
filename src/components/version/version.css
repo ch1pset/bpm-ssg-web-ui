@@ -5,10 +5,7 @@
     width: 100vh;
 }
 .version:hover {
-    font-size: 2vh;
-    text-align: left;
-    color: darkred;
-    width: 100vh;
+    font-weight: bold;
 }
 
 .info {
