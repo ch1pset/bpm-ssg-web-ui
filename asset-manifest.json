@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "./static/css/main.71e60b76.chunk.css",
-    "main.js": "./static/js/main.68d668cd.chunk.js",
-    "main.js.map": "./static/js/main.68d668cd.chunk.js.map",
+    "main.css": "./static/css/main.a8b30948.chunk.css",
+    "main.js": "./static/js/main.7204c2f5.chunk.js",
+    "main.js.map": "./static/js/main.7204c2f5.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.b644ba46.js",
     "runtime-main.js.map": "./static/js/runtime-main.b644ba46.js.map",
     "static/js/2.1d847ae1.chunk.js": "./static/js/2.1d847ae1.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.f3d14fe5.chunk.js": "./static/js/3.f3d14fe5.chunk.js",
     "static/js/3.f3d14fe5.chunk.js.map": "./static/js/3.f3d14fe5.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.71e60b76.chunk.css.map": "./static/css/main.71e60b76.chunk.css.map",
+    "static/css/main.a8b30948.chunk.css.map": "./static/css/main.a8b30948.chunk.css.map",
     "static/js/2.1d847ae1.chunk.js.LICENSE.txt": "./static/js/2.1d847ae1.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/NoHUD_Helheim1.c4eefbe1.png",
     "static/media/App.css": "./static/media/Norse.7b3376da.svg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.b644ba46.js",
     "static/js/2.1d847ae1.chunk.js",
-    "static/css/main.71e60b76.chunk.css",
-    "static/js/main.68d668cd.chunk.js"
+    "static/css/main.a8b30948.chunk.css",
+    "static/js/main.7204c2f5.chunk.js"
   ]
 }
