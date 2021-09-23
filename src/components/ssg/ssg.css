@@ -1,6 +1,7 @@
 .SSG {
     text-align: center;
-    width: fit-content;
+    width: 40vh;
+    justify-content: center;
 }
 
 .ssg-opt {

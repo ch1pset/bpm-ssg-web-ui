@@ -21,6 +21,14 @@ const FLOORS = [
     ["Svartalfheim I", '4'], ["Svartalfheim II", '5'],
     ["Helheim I", '6'], ["Helheim II", '7']
 ]
+const TOOTIP = {
+    ENHANCE: "* Well Rooms have more/better items.\n" 
+            + "* Removes some undesireable items from Angel/Devil Statue and Cursed/Hero Chest pools",
+    FLOOR: "WARNING: Practice difficulty ends on Gullveig, even in Helheim.",
+    RANDOM: "Enter a seed, all unicode characters valid.\n\nOR\n\nGenerate a random 20-character, alpha-numeric seed.",
+    REQUIRED: "*Required*\n\n",
+    OPTIONAL: "*Optional*\n\n"
+}
 
 class SSG extends React.Component {
     constructor() {
@@ -85,24 +93,30 @@ class SSG extends React.Component {
                 
                 <div className="ssg-opt">
                     <Dropdown name="Character" options={CHARACTERS}
+                        tooltip={TOOTIP.REQUIRED}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="ssg-opt">
                     <Dropdown name="Difficulty" options={DIFFICULTIES}
+                        tooltip={TOOTIP.REQUIRED}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="ssg-opt">
                     <Dropdown name="Floor" options={FLOORS.map(([f, i]) => f)}
+                        tooltip={`${TOOTIP.OPTIONAL}${TOOTIP.FLOOR}`}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="ssg-opt">
                     <SeedField name="Seed" seed={this.state.seed}
+                        tooltip={`${TOOTIP.REQUIRED}${TOOTIP.RANDOM}`}
                         onChange={this.handleChange}/>
                 </div>
                 <div className="ssg-opt">
-                    <Checkbox name="Enhance" label="Enhanced Item Pools"
+                    <Checkbox name="Enhance" label="Enhanced Item Pools" 
+                        tooltip={`${TOOTIP.OPTIONAL}${TOOTIP.ENHANCE}`}
                         onChange={this.handleChange}/>
                 </div>
+                
                 <div className="ssg-gen">
                     <DownloadButton onClick={this.handleClick} label="Generate Save"/>
                 </div>
