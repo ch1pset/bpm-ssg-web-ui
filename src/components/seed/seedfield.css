@@ -1,5 +1,6 @@
 .seedfield {
     display:flex;
+    justify-content: center;
 }
 .Field {
     font-family: monospace;
