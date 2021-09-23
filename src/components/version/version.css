@@ -23,6 +23,18 @@
     width: 50vw;
 }
 
-.info-active h1, p a  {
+.info-active p, li {
+    color:lightgray;
+}
+
+.info-active p a  {
+    color: orangered;
+}
+
+.info-active h1 {
     color: darkred;
+}
+
+.info-active h2 {
+    color: white;
 }
