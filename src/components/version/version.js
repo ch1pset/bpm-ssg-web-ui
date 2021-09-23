@@ -26,12 +26,16 @@ class VersionInfo extends React.Component {
   }
   render() {
     return (
-      <div styles={styles}>
+      <div className="version-wrapper" styles={styles}>
         <label className="version" 
-          onClick={this.handleClick} >v{this.props.value}</label>
-        <ReactMarkdown 
-            className={`info${this.state.active ? '-active':''}`}
-            children={this.state.value}/>
+          onClick={this.handleClick}>
+            v{this.props.value}
+        </label>
+        <div>
+          <ReactMarkdown 
+              className={`info${this.state.active ? '-active':''}`}
+              children={this.state.value}/>
+        </div>
       </div>
     );
   }
