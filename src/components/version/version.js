@@ -3,7 +3,7 @@ import styles from './version.css';
 import ReactMarkdown from 'react-markdown';
 import API from '../../api';
 
-const changelogId = 'af22f4d07c0720cd7cceb3d41d8fdd73'
+const gistId = 'af22f4d07c0720cd7cceb3d41d8fdd73'
 
 class VersionInfo extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class VersionInfo extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    fetch(`${API.gist}/${changelogId}`)
+    fetch(`${API.gist}/${gistId}`)
         .then(r => r.text())
         .then(text => {
           this.update(JSON.parse(text).files['changelog.md'].content, false);
