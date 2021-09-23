@@ -10,10 +10,6 @@
   width: fit-content;
 }
 
-.ssg-opts {
-  display: flex;
-  justify-content: center;
-}
 .logo {
   margin-top: 2vh;
   height: 10vh;
