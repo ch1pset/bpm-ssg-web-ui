@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "./static/css/main.1d566982.chunk.css",
-    "main.js": "./static/js/main.36a0d0e8.chunk.js",
-    "main.js.map": "./static/js/main.36a0d0e8.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.b3a69b6a.js",
-    "runtime-main.js.map": "./static/js/runtime-main.b3a69b6a.js.map",
-    "static/js/2.8ba692ff.chunk.js": "./static/js/2.8ba692ff.chunk.js",
-    "static/js/2.8ba692ff.chunk.js.map": "./static/js/2.8ba692ff.chunk.js.map",
-    "static/js/3.ecadbf0a.chunk.js": "./static/js/3.ecadbf0a.chunk.js",
-    "static/js/3.ecadbf0a.chunk.js.map": "./static/js/3.ecadbf0a.chunk.js.map",
+    "main.js": "./static/js/main.aea20cae.chunk.js",
+    "main.js.map": "./static/js/main.aea20cae.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.b644ba46.js",
+    "runtime-main.js.map": "./static/js/runtime-main.b644ba46.js.map",
+    "static/js/2.de698e73.chunk.js": "./static/js/2.de698e73.chunk.js",
+    "static/js/2.de698e73.chunk.js.map": "./static/js/2.de698e73.chunk.js.map",
+    "static/js/3.f3d14fe5.chunk.js": "./static/js/3.f3d14fe5.chunk.js",
+    "static/js/3.f3d14fe5.chunk.js.map": "./static/js/3.f3d14fe5.chunk.js.map",
     "index.html": "./index.html",
     "static/css/main.1d566982.chunk.css.map": "./static/css/main.1d566982.chunk.css.map",
-    "static/js/2.8ba692ff.chunk.js.LICENSE.txt": "./static/js/2.8ba692ff.chunk.js.LICENSE.txt",
+    "static/js/2.de698e73.chunk.js.LICENSE.txt": "./static/js/2.de698e73.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/NoHUD_Helheim1.c4eefbe1.png",
     "static/media/App.css": "./static/media/Norse.7b3376da.svg",
     "static/media/bpm_logo_1x1.96a7124c.png": "./static/media/bpm_logo_1x1.96a7124c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b3a69b6a.js",
-    "static/js/2.8ba692ff.chunk.js",
+    "static/js/runtime-main.b644ba46.js",
+    "static/js/2.de698e73.chunk.js",
     "static/css/main.1d566982.chunk.css",
-    "static/js/main.36a0d0e8.chunk.js"
+    "static/js/main.aea20cae.chunk.js"
   ]
 }
