@@ -11,6 +11,7 @@
     display: none;
 }
 .info-active {
+    max-width: 60vw;
     font-size: 2vh;
     text-align: left;
     color: white;
