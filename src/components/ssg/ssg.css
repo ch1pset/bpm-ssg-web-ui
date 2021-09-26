@@ -1,13 +1,12 @@
 .SSG {
     text-align: center;
-    width: 50vw;
     justify-content: center;
 }
 
 .ssg-opt {
     display: flex;
     justify-content: center;
-    margin-bottom: 6vh;
+    margin-bottom: 4vh;
 }
 
 .ssg-gen {
