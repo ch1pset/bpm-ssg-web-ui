@@ -16,6 +16,7 @@ class Checkbox extends React.Component {
         this.change(this.state.checked, !this.state.hover, cb);
     }
     handleClick(e) {
+        console.log(`${!this.state.checked ? 'Selected' : 'Unselected'} ${this.props.name}`)
         this.change(!this.state.checked, this.state.hover,
             () => this.props.onChange(this));
     }

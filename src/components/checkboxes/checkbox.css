@@ -11,7 +11,7 @@
     border-style: solid;
     border-width: 0.4vh;
     border-radius: 1vh;
-    margin-top: 0.5vh;
+    margin-top: 0.2vh;
 }
 .checkbox-active {
     background-color:darkred;
@@ -21,14 +21,13 @@
     border-style: solid;
     border-width: 0.4vh;
     border-radius: 1vh;
-    margin-top: 0.5vh;
+    margin-top: 0.2vh;
 }
 .label {
     user-select: none;
     font-family: Norse;
     font-size: 2vh;
     color: white;
-    padding-top:0.2vh;
     margin-left: 1.5vh;
     margin-right: 1.5vh;
 }
