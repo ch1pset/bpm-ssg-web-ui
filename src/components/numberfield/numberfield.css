@@ -1,0 +1,15 @@
+.num-field {
+    max-width: 20vh;
+    caret-color: transparent;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 2vh;
+    color: darkred;
+    text-align: center;
+    border: black;
+    border-style: solid;
+    border-width: 1px;
+    background-color: white;
+    padding-top: 0.25vh;
+    padding-bottom: 0.25vh;
+}
