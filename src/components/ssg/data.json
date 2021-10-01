@@ -1,0 +1,135 @@
+{
+    "CHARACTERS": [
+        "Goll", "Freyr", "Hildr", "Njord", "Odr",
+        "Skuld", "Geri", "Herfjoter", "Run", "Sanngridr"
+    ],
+    "DIFFICULTIES": [
+        "Easy", "Hard", "Hellish", "Practice"
+    ],
+    "FLOORS": [
+        ["Asgard I", "0"], ["Asgard II", "1"], ["Asgard Crypts", "Crypts"],
+        ["Vanaheim I", "2"], ["Vanaheim II", "3"],
+        ["Svartalfheim I", "4"], ["Svartalfheim II", "5"],
+        ["Helheim I", "6"], ["Helheim II", "7"]
+    ],
+    "LOADOUT": {
+        "WEAPON": [
+            "Bolt-action Rifle",
+            "Burst SMG",
+            "Charge Pistol",
+            "Double-Tap",
+            "Energy Cannon",
+            "Fireball Launcher",
+            "Garand",
+            "Gauss Cannon",
+            "Gold Pistol",
+            "Grenade Launcher",
+            "Haunted Revolver",
+            "Lever Action",
+            "Magic Hands",
+            "Minigun",
+            "Pistol",
+            "Pump Shotgun",
+            "Raygun",
+            "Revolver",
+            "Rocket Launcher",
+            "Sawn-Off Shotgun",
+            "Shotgun Pistol"
+        ],
+        "AUXILARY": [
+            "Dash",
+            "Dash/Flying",
+            "Dash(Full Auto)",
+            "Dash(Skuld)",
+            "Dash/Flying(Floor Is Lava)",
+            "Dash(Herfjoter)",
+            "Dash(Retro)",
+            "Dash(Supertime)"
+        ],
+        "SECONDARY": [
+            "Block",
+            "Broken Burst",
+            "Burning Coin",
+            "Celestial Wave",
+            "Fire Bolt",
+            "Frost Bolt",
+            "Mortal Curse",
+            "Rhythm Burst",
+            "Sacred Sapper",
+            "Snipe",
+            "Steal Life",
+            "Teleport",
+            "Thunderclap",
+            "Undying Strength",
+            "Valkyrie's Veil"
+        ],
+        "ULTIMATE": [
+            "Banking",
+            "Barter",
+            "Elli's Touch",
+            "Cursed Luck",
+            "Freyr's Blessing",
+            "Geri's Audit",
+            "Hermóðr's Enchantment",
+            "Jarnbjorn",
+            "Mjolnir",
+            "Njord's Riches",
+            "Odin's Blessing",
+            "Snap Fingers",
+            "Sigyn's Help",
+            "The Quest",
+            "Valkyrie's Call"
+        ],
+        "CURSE": [
+            "Bleeding",
+            "Fabled",
+            "Fragile",
+            "Gambit",
+            "Godlike",
+            "Mania!",
+            "Poverty",
+            "Runner",
+            "Twitch",
+            "Want"
+        ]
+    },
+
+    "ROOMS": [
+        ["choice", "Force Well Room" ],
+        ["stairs", "Force Stairs Room" ],
+        ["prestige", "Force Prestige Room" ],
+        ["portal", "Force Portal Room" ]
+    ],
+    "STATS": [
+        ["Coins" , "Coins"],
+        ["Keys" , "Keys"],
+        ["Health" , "Health"],
+        ["Shield" , "Shield"],
+        ["Ammo" , "Extra Ammo"],
+        ["Ability" , "Ability Stat"],
+        ["Precision", "Precision Stat"],
+        ["Damage" , "Damage Stat"],
+        ["Luck" , "Luck Stat"],
+        ["Range" , "Range Stat"],
+        ["Speed" , "Speed Stat"]
+    ],
+    "TRAITS": [
+        ["clearall",    "Require Cleared Rooms"],
+        ["goldhealth",  "Coins are Health"],
+        ["small",       "Small Character"],
+        ["banks",       "Always Spawn Bank"],
+        ["noweapons",   "Disable Pickup Weapons"],
+        ["nohealth",    "Disable Health"],
+        ["noshops",     "No Shops"],
+        ["notreasure",  "No Treasure Rooms"],
+        ["noarmory",    "No Armories"]
+    ],
+
+    "TOOLTIP": {
+        "ENHANCE": "Complete rebalancing of item pools:\n* Shop/BlackMarket/Long chests only have utility items\n* Gold chests have mid-to-low tier items\n* Angel/Devil Statues give mid-to-high tier loot\n* Cursed chests have less junk, now also give coin bags\n* Hero/Wave 3 Challenge chests always give high-tier loot\n* More Boss chest loot(coin bags, precision up, health up)\n* Guaranteed high-tier items in Well Room\n* Library and Weapon pools are rebalanced\n* Skeleton Key is now very rare, only in gold chests\n",
+        "FLOOR": "WARNING: Practice difficulty ends on Gullveig, even in Helheim",
+        "SEED": "All unicode characters valid\n\nSpecial Seeds(experimental):\n* `null`\n\t* No \"FloorSeeds\" are generated\n\t* Special Room and Item randomization seeded with a value of 0",
+        "REQUIRED": "*Required*\n\n",
+        "OPTIONAL": "*Optional*\n\n"
+    }
+}
