@@ -1,20 +1,68 @@
 
-.expander-label {
+.expander-wrapper {
     color: white;
     font-size: 2.5vh;
     font-family: Norse;
     margin-bottom: 2vh;
 }
-
+.expander-wrapper *[show] {
+    display: flex;
+    justify-content: space-evenly;
+    transition: transform 100ms, max-height 250ms;
+}
+.expander-wrapper *[show=false] {
+    max-height: 0px;
+    transform: scaleY(0);
+}
+.expander-wrapper *[show=true] {
+    max-height: 100vh;
+    transform: scaleY(1);
+}
 .expander-label:hover {
-    font-size: 2.5vh;
     font-weight: bold;
 }
-
-.expander-hidden {
-    display: none;
+.expander-label .carot[direction=down] {
+    font-size: 1.5vh;
+    margin-bottom: 1vh;
 }
-
-.expander-show {
-    display: block;
+.expander-label .carot[direction=up] {
+    font-size: 1.5vh;
+    margin-bottom: 1vh;
+    margin-top: 10px;
+}
+.expander-label .carot[animation=rotate][direction=down]{
+    animation: rotate-180 250ms;
+}
+.expander-label .carot[animation=rotate][direction=up]{
+    animation: rotate-180 250ms;
+}
+.expander-label .carot[animation=slide][direction=down]{
+    animation: slide-down 500ms;
+}
+.expander-label .carot[animation=slide][direction=up]{
+    animation: slide-up 500ms;
+}
+@keyframes rotate-180 {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+@keyframes slide-up {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+@keyframes slide-down {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(10px);
+    }
 }
