@@ -1,23 +1,25 @@
 import React from 'react';
-import Tooltip from '../tooltip/tooltip';
+import Tooltip from '../tooltip';
 import styles from './dropdowns.css';
 
-class Dropdown extends React.Component {
+export class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {selection:"",hover:false}
+        this.state = {selection:[],hover:false}
         this.handleChange = this.handleChange.bind(this);
         this.handleHover = this.handleHover.bind(this);
-        }
-    valid() {
-        return this.state.selection !== "";
     }
     handleChange(e) {
-        console.log(`Selected ${e.target.value}`)
+        let selected = e.target.selectedOptions;
         this.setState({
-            selection:e.target.value,
+            selection:this.props.multiple ? 
+                Object.keys(selected).filter(s => selected[s].value !== "").map(k => selected[k].value)
+                : e.target.value,
             hover:this.state.hover
-        }, () => this.props.onChange(this));
+        }, () => {
+            console.log(`Selected ${this.state.selection.toString()}`)
+            this.props.onChange(this)
+        });
     }
     handleHover(e) {
         this.setState({
@@ -25,25 +27,22 @@ class Dropdown extends React.Component {
             hover:!this.state.hover
         })
     }
-    createOptions() {
-        return this.props.options.map((opt, i) => {
-            return <option className="dropdown-option" key={i} value={opt}>{opt}</option>
-        });
-    }
     render() {
         return (
-            <div style={styles}>
-                <select className="Dropdown" 
+            <div className={this.props.className} style={styles}>
+                <select className="Dropdown"
+                    multiple={this.props.multiple}
                     onChange={this.handleChange}
                     onPointerEnter={this.handleHover}
                     onPointerLeave={this.handleHover}>
-                    <option value="">--Choose a {this.props.name}--</option>
-                    {this.createOptions()}
+                    <option value="">--Choose {this.props.multiple ? '':'a'} {this.props.name}--</option>
+                    {this.props.options
+                        .map((opt, i) => <option className="dropdown-option"
+                                            key={i} value={opt}>{opt}</option>)}
                 </select>
-                <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
+                <Tooltip show={this.state.hover}
+                    tooltip={this.props.tooltip + (this.props.multiple ? "*`CTRL + Click` to select multiple*\n\n":'')}/>
             </div>
         );
     }
 }
-
-export default Dropdown;
