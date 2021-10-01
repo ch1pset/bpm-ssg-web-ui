@@ -45,7 +45,7 @@ export class SeedField extends React.Component {
   }
   render() {
     return (
-      <div styles={styles}>
+      <div className={this.props.className} styles={styles}>
           <div onPointerEnter={this.handleHover} 
               onPointerLeave={this.handleHover} 
               className="seedfield">
