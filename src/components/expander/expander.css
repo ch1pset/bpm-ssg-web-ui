@@ -21,25 +21,25 @@
 .expander-label:hover {
     font-weight: bold;
 }
-.expander-label .carot[direction=down] {
+.expander-label .caret[direction=down] {
     font-size: 1.5vh;
     margin-bottom: 1vh;
 }
-.expander-label .carot[direction=up] {
+.expander-label .caret[direction=up] {
     font-size: 1.5vh;
     margin-bottom: 1vh;
     margin-top: 10px;
 }
-.expander-label .carot[animation=rotate][direction=down]{
+.expander-label .caret[animation=rotate][direction=down]{
     animation: rotate-180 250ms;
 }
-.expander-label .carot[animation=rotate][direction=up]{
+.expander-label .caret[animation=rotate][direction=up]{
     animation: rotate-180 250ms;
 }
-.expander-label .carot[animation=slide][direction=down]{
+.expander-label .caret[animation=slide][direction=down]{
     animation: slide-down 500ms;
 }
-.expander-label .carot[animation=slide][direction=up]{
+.expander-label .caret[animation=slide][direction=up]{
     animation: slide-up 500ms;
 }
 @keyframes rotate-180 {

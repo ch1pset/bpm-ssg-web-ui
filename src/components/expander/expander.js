@@ -44,16 +44,22 @@ export class Expander extends React.Component {
     }
     render() {
         return (
-            <div className="expander-wrapper" style={styles}>
-                <div className="expander-label" onClick={this.handleClick}
-                    onPointerEnter={this.handleHover} onPointerLeave={this.handleHover}>
-                    <label>{`${this.props.label}`}</label>
-                    <div className={'carot'} animation={this.Animation} direction={this.Direction}>
-                        <label>{`${this.Expanded ? '˄' : '˅'}`}</label>
+            <div style={styles}>
+                <div className="expander-wrapper" style={{fontFamily:`${this.props.font}`}}>
+                    <div className="expander-label" onClick={this.handleClick}
+                        onPointerEnter={this.handleHover} onPointerLeave={this.handleHover}>
+                        <label>{`${this.props.label}`}</label>
+                        <div className={'caret'}
+                            style={{display:`${this.props.hideCaret ? 'none' : 'block'}`}}
+                            animation={this.Animation} direction={this.Direction}>
+                            <label>
+                                {`${this.Expanded ? '˄' : '˅'}`}
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div className={this.props.className} show={`${this.Expanded}`}>
-                        {this.props.content}
+                    <div className={this.props.className} show={`${this.Expanded}`}>
+                            {this.props.content}
+                    </div>
                 </div>
             </div>
         )

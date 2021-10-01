@@ -1,7 +1,7 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import SeedField from '../seed';
 import DownloadButton from '../download';
-import VersionInfo from '../version';
 import styles from './ssg.css';
 import Dropdown from '../dropdowns';
 import Checkbox from '../checkboxes';
@@ -14,6 +14,9 @@ import {
     CHARACTERS, DIFFICULTIES, FLOORS, 
     LOADOUT, TOOLTIP, STATS, ROOMS, TRAITS 
 } from './data.json'
+import API from '../../api';
+
+const gistId = 'af22f4d07c0720cd7cceb3d41d8fdd73'
 
 export class SSG extends React.Component {
     static contextType = SsgContext;
@@ -24,8 +27,27 @@ export class SSG extends React.Component {
         this.state = {
             bMissingRequisites:true,
             bTooManySelectedCurses:false,
-            bTooManyStatPoints:false
+            bTooManyStatPoints:false,
+            changelog:""
         }
+    }
+    get Changelog() {
+        return this.state.changelog;
+    }
+    set Changelog(changelog) {
+        this.setState({
+            bMissingRequisites:this.state.bMissingRequisites,
+            bTooManySelectedCurses:this.state.bTooManySelectedCurses,
+            bTooManyStatPoints:this.state.bTooManyStatPoints,
+            changelog
+        })
+    }
+    componentDidMount() {
+      fetch(`${API.gist}/${gistId}`)
+          .then(r => r.text())
+          .then(text => {
+            this.Changelog = JSON.parse(text).files['changelog.md'].content;
+          })
     }
     handleChange(e) {
         switch(e.props.name.toLowerCase()) {
@@ -148,65 +170,53 @@ export class SSG extends React.Component {
     render() {
         return (
             <div className="SSG" style={styles}>
-                <div className="ssg-opt">
-                    <Dropdown name="character" options={CHARACTERS}
-                        tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
-                </div>
-                <div className="ssg-opt">
-                    <Dropdown name="difficulty" options={DIFFICULTIES}
-                        tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
-                </div>
-                <div className="ssg-opt">
-                    <SeedField name="seed" seed={this.context.seed}
-                        tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED}`}
-                        onChange={this.handleChange}/>
-                </div>
-                <div className="ssg-opt">
-                    <Dropdown name="floor" options={FLOORS.map(([f, i]) => f)}
-                        tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
-                        onChange={this.handleChange}/>
-                </div>
-                <div className="ssg-opt">
-                    <Checkbox name="enhance" label="Enhanced Item Pools" 
-                        tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE}`}
-                        onChange={this.handleChange}/>
-                </div>
-                <Expander className="ssg-expand" label="Special Room Options" content={
+                <Dropdown className="ssg-opt" name="character" options={CHARACTERS}
+                    tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
+                <Dropdown className="ssg-opt" name="difficulty" options={DIFFICULTIES}
+                    tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
+                <SeedField className="ssg-opt" name="seed" seed={this.context.seed}
+                    tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED}`}
+                    onChange={this.handleChange}/>
+                <Dropdown className="ssg-opt" name="floor" options={FLOORS.map(([f, i]) => f)}
+                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
+                    onChange={this.handleChange}/>
+                <Checkbox className="ssg-opt" name="enhance" label="Enhanced Item Pools" 
+                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE}`}
+                    onChange={this.handleChange}/>
+                <Expander className="ssg-expand" label="Special Room Options" font='Norse' content={
                     <div className="ssg-group">
                         {ROOMS.map(
                         ([name, label]) => <Checkbox className="radio" name={name} label={label} 
                                                 tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}
                     </div>
                 }/>
-                <Expander className="ssg-expand" label="Character/Challenge Traits" content={
+                <Expander className="ssg-expand" label="Character/Challenge Traits" font='Norse' content={
                     <div className="ssg-group">
                         {TRAITS.map(
                         ([name, label]) => <Checkbox className="radio" name={name} label={label}
                                                 tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}
                     </div>
                 }/>
-                <Expander className="ssg-expand" label="Loadout Options" content={
+                <Expander className="ssg-expand" label="Loadout Options" font='Norse' content={
                     <div className="ssg-group vertical">
-                        {Object.keys(LOADOUT)
-                            .map(name => <Dropdown className="dropdown" name={name} options={LOADOUT[name]}
-                                        multiple={name==='CURSE'} tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}                                        
+                        {Object.keys(LOADOUT).map(
+                        (name) => <Dropdown className="dropdown" name={name} options={LOADOUT[name]}
+                                    multiple={name==='CURSE'} tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}                                        
                         <Checkbox className="dropdown" name="ultcharge" label="Ultimate Charged at Start"
                             tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
                     </div>
                 }/>
-                <Expander className="ssg-expand" label="Stats/Inventory Options" content={
+                <Expander className="ssg-expand" label="Stats/Inventory Options" font='Norse' content={
                     <div className="ssg-group">
                         {STATS.map(
-                        ([name, label]) => <NumberField className="number" name={name} label={label}
+                        ([name, label]) => <NumberField className="number" name={name} label={label} hideCursor={true}
                                                 tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}
                     </div>
                 }/>
-                <div className="ssg-gen">
-                    <DownloadButton onClick={this.handleClick} label="Generate Save"/>
-                </div>
-                <div>
-                    <VersionInfo className="changelog" value={application.version}/>
-                </div>
+                <DownloadButton onClick={this.handleClick} label="Generate Save"/>
+                <Expander className="ssg-expand version" hideCaret={true}
+                    font='Verdana' label={`v${application.version}`} 
+                    content={<ReactMarkdown className="changelog" children={this.Changelog}/>}/>
             </div>
         )
     }   

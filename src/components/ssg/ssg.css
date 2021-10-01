@@ -58,12 +58,34 @@
     margin-right: 4vh;
 }
 
-.ssg-gen {
-    padding-top: 2vh;
+.ssg-expand .changelog {
+    max-width: 60vw;
+    height: fit-content;
+    font-size: 1.5vh;
+    text-align: left;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-style: solid;
+    border-radius: 2vh;
+    padding: 2vh;
+    margin-top: 4vh;
+}
+.ssg-expand:hover .changelog {
+    font-weight: normal;
 }
 
-.changelog {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+.ssg-expand .changelog p, li {
+    color:lightgray;
+}
+
+.ssg-expand .changelog p a  {
+    color: orangered;
+}
+
+.ssg-expand .changelog h1 {
+    color: darkred;
+}
+
+.ssg-expand .changelog h2 {
+    color: white;
 }
