@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './seedfield.css';
 import xorshift from '../../utils/xorshift';
-import Tooltip from '../tooltip/tooltip';
+import Tooltip from '../tooltip';
 
-class SeedField extends React.Component {
+export class SeedField extends React.Component {
   constructor(props) {
     super(props);
     this.state = {seed:"", hover:false}
@@ -63,5 +63,3 @@ class SeedField extends React.Component {
     );
   }
 }
-
-export default SeedField;

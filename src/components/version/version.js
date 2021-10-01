@@ -5,7 +5,7 @@ import API from '../../api';
 
 const gistId = 'af22f4d07c0720cd7cceb3d41d8fdd73'
 
-class VersionInfo extends React.Component {
+export class VersionInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value:null, active:false}
@@ -31,7 +31,7 @@ class VersionInfo extends React.Component {
           onClick={this.handleClick}>
             v{this.props.value}
         </label>
-        <div>
+        <div className={this.props.className}>
           <ReactMarkdown 
               className={`info${this.state.active ? '-active':''}`}
               children={this.state.value}/>
@@ -40,5 +40,3 @@ class VersionInfo extends React.Component {
     );
   }
 }
-
-export default VersionInfo;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './download.css';
 
-class DownloadButton extends React.Component {
+export class DownloadButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,5 +41,3 @@ class DownloadButton extends React.Component {
     );
   }
 }
-
-export default DownloadButton;

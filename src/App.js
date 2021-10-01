@@ -1,4 +1,4 @@
-import SSG from './components/ssg/ssg'
+import SSG from './components/ssg'
 import bpm_logo from './media/bpm_logo_1x1.png'
 import './App.css';
 

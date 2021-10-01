@@ -2,7 +2,7 @@ import React from "react"
 import ReactMarkdown from "react-markdown"
 import Styles from './tooltip.css'
 
-class Tooltip extends React.Component {
+export class Tooltip extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -19,5 +19,3 @@ class Tooltip extends React.Component {
         )
     }
 }
-
-export default Tooltip;

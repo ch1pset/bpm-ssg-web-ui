@@ -1,8 +1,8 @@
 import React from "react";
-import Tooltip from '../tooltip/tooltip'
+import Tooltip from '../tooltip'
 import Styles from './checkbox.css';
 
-class Checkbox extends React.Component {
+export class Checkbox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {checked:false, hover:false};
@@ -25,7 +25,7 @@ class Checkbox extends React.Component {
     }
     render() {
         return (
-            <div className="checkbox-span">
+            <div className={this.props.className}>
                 <div className="checkbox-container" 
                     onPointerEnter={this.handleHover} 
                     onPointerLeave={this.handleHover} 
@@ -43,5 +43,3 @@ class Checkbox extends React.Component {
           )
     }
 }
-
-export default Checkbox;
