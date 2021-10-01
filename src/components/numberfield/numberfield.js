@@ -29,6 +29,7 @@ export class NumberField extends React.Component {
                 <div className={this.props.className}>
                     <label className="num-label">{`${this.props.label} :`}</label>
                     <input className="num-field"
+                        style={{caretColor:`${this.props.hideCursor ? 'transparent' : 'inherit'}`}}
                         placeholder={'-'}
                         onKeyPress={(event) => {
                             if (!/[0-9]/.test(event.key))
