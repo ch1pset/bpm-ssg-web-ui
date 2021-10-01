@@ -23,17 +23,19 @@ export class NumberField extends React.Component {
     }
     render() {
         return (  
-            <div className={this.props.className}
-                onPointerEnter={this.handleHover}
+            <div onPointerEnter={this.handleHover}
                 onPointerLeave={this.handleHover}
                 style={styles}>
-                <input className="num-field" 
-                    placeholder={this.props.name}
-                    onKeyPress={(event) => {
-                        if (!/[0-9]/.test(event.key))
+                <div className={this.props.className}>
+                    <label className="num-label">{`${this.props.label} :`}</label>
+                    <input className="num-field"
+                        placeholder={'-'}
+                        onKeyPress={(event) => {
+                            if (!/[0-9]/.test(event.key))
                             event.preventDefault();
-                    }}
-                    onChange={this.handleChange}/>
+                        }}
+                        onChange={this.handleChange}/>
+                </div>
                 <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
             </div>
         )

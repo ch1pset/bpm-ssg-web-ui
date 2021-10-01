@@ -1,6 +1,5 @@
 .num-field {
-    max-width: 20vh;
-    caret-color: transparent;
+    max-width: 6vh;
     font-family: monospace;
     font-weight: bold;
     font-size: 2vh;
@@ -12,4 +11,10 @@
     background-color: white;
     padding-top: 0.25vh;
     padding-bottom: 0.25vh;
+}
+.num-label {
+    color: white;
+    font-family: Norse;
+    font-size: 2vh;
+    margin-top: 0.5vh;
 }
