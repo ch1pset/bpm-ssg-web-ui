@@ -175,13 +175,13 @@ export class SSG extends React.Component {
                 <Dropdown className="ssg-opt" name="difficulty" options={DIFFICULTIES}
                     tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
                 <SeedField className="ssg-opt" name="seed" seed={this.context.seed}
-                    tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED}`}
+                    tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED.join('\n')}`}
                     onChange={this.handleChange}/>
                 <Dropdown className="ssg-opt" name="floor" options={FLOORS.map(([f, i]) => f)}
                     tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
                     onChange={this.handleChange}/>
                 <Checkbox className="ssg-opt" name="enhance" label="Enhanced Item Pools" 
-                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE}`}
+                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE.join('\n')}`}
                     onChange={this.handleChange}/>
                 <Expander className="ssg-expand" label="Special Room Options" font='Norse' content={
                     <div className="ssg-group">

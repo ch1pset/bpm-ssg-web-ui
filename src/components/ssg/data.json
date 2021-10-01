@@ -126,9 +126,26 @@
     ],
 
     "TOOLTIP": {
-        "ENHANCE": "Complete rebalancing of item pools:\n* Shop/BlackMarket/Long chests only have utility items\n* Gold chests have mid-to-low tier items\n* Angel/Devil Statues give mid-to-high tier loot\n* Cursed chests have less junk, now also give coin bags\n* Hero/Wave 3 Challenge chests always give high-tier loot\n* More Boss chest loot(coin bags, precision up, health up)\n* Guaranteed high-tier items in Well Room\n* Library and Weapon pools are rebalanced\n* Skeleton Key is now very rare, only in gold chests\n",
+        "ENHANCE": [
+            "Complete rebalancing of item pools:",
+            "* Shop/BlackMarket/Long chests only have utility items",
+            "* Gold chests have mid-to-low tier items",
+            "* Angel/Devil Statues give mid-to-high tier loot",
+            "* Cursed chests have less junk, now also give coin bags",
+            "* Hero/Wave 3 Challenge chests always give high-tier loot",
+            "* More Boss chest loot(coin bags, precision up, health up)",
+            "* Guaranteed high-tier items in Well Room",
+            "* Library and Weapon pools are rebalanced",
+            "* Skeleton Key is now very rare, only in gold chests"
+        ],
         "FLOOR": "WARNING: Practice difficulty ends on Gullveig, even in Helheim",
-        "SEED": "All unicode characters valid\n\nSpecial Seeds(experimental):\n* `null`\n\t* No \"FloorSeeds\" are generated\n\t* Special Room and Item randomization seeded with a value of 0",
+        "SEED": [
+            "All unicode characters valid\n",
+            "Special Seeds(experimental):",
+            "* `null`",
+            "\t* No \"FloorSeeds\" are generated",
+            "\t* Special Room and Item randomization seeded with a value of 0"
+        ],
         "REQUIRED": "*Required*\n\n",
         "OPTIONAL": "*Optional*\n\n"
     }
