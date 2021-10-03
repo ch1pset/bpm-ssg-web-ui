@@ -2,12 +2,10 @@
     display:flex;
     justify-content: center;
 }
-.Field {
+.seedfield[child=field] {
     font-family: monospace;
     font-weight: bold;
     font-size: 2.5vh;
-    color: darkred;
-    align-content: center;
     border: black;
     border-style: solid;
     border-width: 1px;
@@ -15,10 +13,10 @@
     padding-top: 0.25vh;
     padding-bottom: 0.25vh;
 }
-.button {
+.seedfield[child=button] {
     cursor:default;
     user-select: none;
-    font-family: Norse;
+    font-family: monospace;
     font-size: 2.5vh;
     font-weight: bold;
     color: darkred;
@@ -26,12 +24,13 @@
     border: black;
     border-style: solid;
     border-width: 1px;
+    border-radius: 0;
     background-color: white;
     padding-left: 1vh;
     padding-right: 1vh;
     padding-top: 0.3vh;
 }
-.button:active {
+.seedfield[child=button]:active {
     color: white;
     align-content: center;
     background-color: darkred;

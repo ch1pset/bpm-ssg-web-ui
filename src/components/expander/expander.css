@@ -1,46 +1,57 @@
-
-.expander-wrapper {
-    color: white;
-    font-size: 2.5vh;
-    font-family: Norse;
-    margin-bottom: 2vh;
+:root {
+    --small-spacing: 1vh;
 }
-.expander-wrapper *[show] {
-    display: flex;
-    justify-content: space-evenly;
-    transition: transform 100ms, max-height 250ms;
-}
-.expander-wrapper *[show=false] {
+[animation=none][expand=false] {
     max-height: 0px;
+    max-width: 0px;
     transform: scaleY(0);
 }
-.expander-wrapper *[show=true] {
-    max-height: 100vh;
+[animation=none][expand=true] {
+    max-height: none;
+    max-width: none;
     transform: scaleY(1);
 }
-.expander-label:hover {
+[animation=close] {
+    animation: open-close 500ms;
+}
+[animation=open] {
+    animation: open-close 500ms reverse;
+}
+[hoverEffect=bold]:hover {
     font-weight: bold;
 }
-.expander-label .caret[direction=down] {
-    font-size: 1.5vh;
-    margin-bottom: 1vh;
+[direction=up] {
+    margin-top: var(--small-spacing);
 }
-.expander-label .caret[direction=up] {
-    font-size: 1.5vh;
-    margin-bottom: 1vh;
-    margin-top: 10px;
-}
-.expander-label .caret[animation=rotate][direction=down]{
+[animation=rotate][direction=down]{
     animation: rotate-180 250ms;
 }
-.expander-label .caret[animation=rotate][direction=up]{
+[animation=rotate][direction=up]{
     animation: rotate-180 250ms;
 }
-.expander-label .caret[animation=slide][direction=down]{
-    animation: slide-down 500ms;
+[animation=slide][direction=down]{
+    animation: slide-down 500ms infinite;
 }
-.expander-label .caret[animation=slide][direction=up]{
-    animation: slide-up 500ms;
+[animation=slide][direction=up]{
+    animation: slide-up 500ms infinite;
+}
+@keyframes open-close {
+    0% {
+        transform: scaleY(1);
+    }
+    33% {
+        transform: scaleY(0);
+    }
+    66% {
+        transform: scaleY(0);
+        max-height: 100vh;
+        max-width: 100vw;
+    }
+    100% {
+        transform: scaleY(0);
+        max-height: 0px;
+        max-width: 0px;
+    }
 }
 @keyframes rotate-180 {
     from {
@@ -55,7 +66,7 @@
         transform: translateY(0);
     }
     to {
-        transform: translateY(-10px);
+        transform: translateY(calc(-1 * var(--small-spacing)));
     }
 }
 @keyframes slide-down {
@@ -63,6 +74,6 @@
         transform: translateY(0);
     }
     to {
-        transform: translateY(10px);
+        transform: translateY(var(--small-spacing));
     }
 }

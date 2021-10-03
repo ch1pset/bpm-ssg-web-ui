@@ -25,20 +25,28 @@ export class Checkbox extends React.Component {
     }
     render() {
         return (
-            <div className={this.props.className}>
-                <div className="checkbox-container" 
-                    onPointerEnter={this.handleHover} 
-                    onPointerLeave={this.handleHover} 
-                    style={Styles}>
-                    <div className={`checkbox${this.state.checked ? '-active' : ''}`} 
-                        onClick={this.handleClick} 
-                        checked={this.state.checked}/>
-                    <div className="label"
-                        onClick={this.handleClick}>
-                            {this.props.label}
+            <div className={this.props.className} style={Styles}>
+                <div className="checkbox" child="outer-container" flex="column">
+                    <span className="checkbox" child="inner-container" flex="row" spacing="around">
+                        <span className="checkbox" child="area" flex="row" justify="left"
+                            onPointerEnter={this.handleHover} 
+                            onPointerLeave={this.handleHover}>
+                            <span className="checkbox" child="box-container" flex="column" spacing="around">
+                                <span className="checkbox" child="box"
+                                    boxStyle={this.props.boxStyle}
+                                    onClick={this.handleClick} 
+                                    active={`${this.state.checked}`}/>
+                            </span>
+                            <label className="checkbox" child="label" margin="left"
+                                onClick={this.handleClick}>
+                                {this.props.label}
+                            </label>
+                        </span>
+                    </span>
+                    <div className="checkbox" child="tooltip">
+                        <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
                     </div>
                 </div>
-                <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
             </div>
           )
     }

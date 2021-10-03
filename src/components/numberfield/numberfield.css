@@ -1,20 +1,10 @@
-.num-field {
-    max-width: 6vh;
-    font-family: monospace;
-    font-weight: bold;
-    font-size: 2vh;
-    color: darkred;
-    text-align: center;
-    border: black;
-    border-style: solid;
-    border-width: 1px;
-    background-color: white;
-    padding-top: 0.25vh;
-    padding-bottom: 0.25vh;
+.num[child=container] {
+    width: 100%;
 }
-.num-label {
+.num[child=label] {
     color: white;
-    font-family: Norse;
-    font-size: 2vh;
-    margin-top: 0.5vh;
+}
+.num[child=field] {
+    max-width: 20%;
+    text-align: center;
 }

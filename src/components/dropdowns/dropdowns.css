@@ -1,15 +1,7 @@
-.Dropdown {
-    font-size: 2vh;
-    font-family: Norse;
-    font-weight: bold;
+.dropdown[child=select] {
+    width: 100%;
     text-align: center;
-    color: darkred;
-    background-color: white;
-    border-color: black;
     border-style: solid;
-}
-
-.dropdown-option {
-    text-align: center;
-    justify-content: center;
+    border-color: black;
+    border-width: 2px;
 }

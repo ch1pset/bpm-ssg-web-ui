@@ -7,28 +7,33 @@ export class Expander extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleHover = this.handleHover.bind(this);
         this.state = {
-            show:false,
-            animation:'none',
-            hover:false
+            show:false, hover:false,
+            caretAnimation:'none',
+            expandAnimation:'none',
         }
     }
-    change(show, hover, animation, cb) {
-        this.setState({show, hover, animation}, cb)
-    }
     handleHover(e) {
-        this.change(this.Expanded, !this.Hover, !this.Hover?'slide':'none');
+        this.setState({
+            hover:!this.Hover,
+            caretAnimation:!this.Hover ? 'slide' : 'none'
+        });
     }
     handleClick(e) {
-        let oldAnimation = this.Animation;
-        let timeout = (ms, cb) => setTimeout(cb, ms);
-        this.change(!this.Expanded, this.Hover, 'rotate',
-            () => timeout(500, () => this.revertAnimation(oldAnimation)));
+        this.setState({
+            show:!this.Expanded,
+            caretAnimation:'rotate',
+            expandAnimation:!this.Expanded ? 'open' : 'close'
+        }, () => {
+            if(this.props.onExpand)
+                this.props.onExpand(this);
+            setTimeout(() => this.setState({
+                caretAnimation:this.Hover ? 'slide' : 'none',
+                expandAnimation:'none'
+            }), 480)
+        });
     }
     get Slide() {
         return !this.Hover ? 'slide' : 'none';
-    }
-    revertAnimation(oldAnimation) {
-        this.change(this.Expanded, this.Hover, this.Hover ? oldAnimation : 'none')
     }
     get Hover() {
         return this.state.hover;
@@ -39,27 +44,27 @@ export class Expander extends React.Component {
     get Direction() {
         return this.Expanded ? 'up' : 'down';
     }
-    get Animation() {
-        return this.state.animation;
+    get CaretAnimation() {
+        return this.state.caretAnimation;
+    }
+    get ExpandAnimation() {
+        return this.state.expandAnimation
     }
     render() {
+        const UP = '˄';
+        const DOWN = '˅';
         return (
-            <div style={styles}>
-                <div className="expander-wrapper" style={{fontFamily:`${this.props.font}`}}>
-                    <div className="expander-label" onClick={this.handleClick}
-                        onPointerEnter={this.handleHover} onPointerLeave={this.handleHover}>
-                        <label>{`${this.props.label}`}</label>
-                        <div className={'caret'}
-                            style={{display:`${this.props.hideCaret ? 'none' : 'block'}`}}
-                            animation={this.Animation} direction={this.Direction}>
-                            <label>
-                                {`${this.Expanded ? '˄' : '˅'}`}
-                            </label>
-                        </div>
+            <div id={this.props.id} className={this.props.className} style={styles}>
+                <div hoverEffect='bold' onClick={this.handleClick}
+                    onPointerEnter={this.handleHover} onPointerLeave={this.handleHover}>
+                    <label>{`${this.props.label}`}</label>
+                    <div child="caret" style={{display:`${this.props.hideCaret?'none':'block'}`}}
+                        animation={this.CaretAnimation} direction={this.Direction}>
+                        <label>{`${this.Expanded ? UP : DOWN}`}</label>
                     </div>
-                    <div className={this.props.className} show={`${this.Expanded}`}>
-                            {this.props.content}
-                    </div>
+                </div>
+                <div animation={this.ExpandAnimation} expand={`${this.Expanded}`}>
+                    {this.props.content}
                 </div>
             </div>
         )

@@ -2,65 +2,225 @@
     text-align: center;
     justify-content: center;
     width: 90vw;
+    --dark-gray: rgb(32, 32, 32);
 }
-
-.ssg-opt {
+::selection {
+    color:white;
+    background-color: darkred;
+}
+[flex=row] {
     display: flex;
-    justify-content: center;
+}
+[flex=column] {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+[wrap=nowrap] {
+    flex-wrap: nowrap;
+}
+[wrap=normal] {
     flex-wrap: wrap;
-    margin-bottom: 4vh;
 }
-
-.ssg-expand {
-    display: flex;
+[spacing=around] {
+    justify-content: space-around;
+}
+[spacing=even] {
     justify-content: space-evenly;
 }
-
-.ssg-group {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction:row;
-    padding: 1vh;
-    min-width:54vh;
-    max-width: 33%;
-    justify-content:space-between;
+[spacing=between] {
+    justify-content: space-between;
+}
+[justify=center] {
+    justify-content: center;
+}
+[justify=left] {
+    justify-content: left;
+}
+[justify=right] {
+    justify-content: right;
+}
+[block=normal] {
+    display:block;
+}
+[block=inline] {
+    display: inline-block;
+}
+[border|=solid] {
     border-style:solid;
-    border-width: 2px;
+    border-width: 0px;
     border-radius: 1vh;
     border-color: rgba(192, 192, 192, 0.4);
 }
-.ssg-group.vertical {
-    display:flex;
-    justify-content: center;
-    padding-left: 0;
+[border*=top] {
+    border-top-width: 2px;
 }
-.ssg-group.vertical .dropdown {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 2vh;
+[border*=bottom] {
+    border-bottom-width: 2px;
 }
-
-.ssg-group .radio {
-    display: flex;
-    justify-content: space-between;
-    margin: 1vh;
+[border*=left] {
+    border-left-width: 2px;
+}
+[border*=right] {
+    border-right-width: 2px;
+}
+[size=fit] {
+    width: fit-content;
+    height: fit-content;
+}
+[font=Norse] {
+    font-family: Norse;
+}
+[pad*=top] {
+    padding-top: 1vh;
+}
+[pad*=bottom] {
+    padding-bottom: 1vh;
+}
+[pad*=left] {
+    padding-left: 1vh;
+}
+[pad*=right] {
+    padding-right: 1vh;
+}
+[margin*=top] {
+    margin-top: 1vh;
+}
+[margin*=bottom] {
+    margin-bottom: 1vh;
+}
+[margin*=left] {
+    margin-left: 1vh;
+}
+[margin*=right] {
+    margin-right: 1vh;
+}
+[margin*=wide-left] {
     margin-left: 4vh;
-    width: 22vh;
 }
-
-.ssg-group .number{
-    display: flex;
-    justify-content: space-between;
-    width: 18vh;
-    margin: 1vh;
-    margin-left: 4vh;
+[margin*=wide-right] {
     margin-right: 4vh;
 }
-
-.ssg-expand .changelog {
+.large-group {
+    max-width: 80vh;
+}
+.large-expand {
+    font-family: MotorBlock;
+    font-size: 3vh;
+    color:white;
+    display: flex;
+    flex-direction: column;
+}
+.ssg-opt {
+    margin-bottom: 4vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ssg-opt [child=field]{
+    max-width: 30vh;
+    font-family: MotorBlock;
+    font-size: 2.4vh;
+    font-weight: normal;
+}
+.ssg-opt [child=button]{
+    font-family: MotorBlock;
+    font-size: 2vh;
+    font-weight: normal;
+}
+.ssg-opt [child=select] {
+    width: 30vh !important;
+    font-family: MotorBlock;
+    font-size: 1.8vh;
+    font-weight: bold;
+    color: darkred;
+}
+.ssg-opt [child=select] [child=optgroup] {
+    font: 2.5vh Norse;
+}
+.ssg-expand {
+    font-family: MotorBlock;
+    font-size: 1.5vh;
+    color: white;
+    margin-bottom: 1vh;
+}
+.ssg-group {
+    max-width: 100%;
+}
+.selection {
+    max-width: 24vh;
+    margin: 1vh;
+}
+.selection.multiple {
+    width: 24vh;
+    margin: 1vh;
+}
+.selection.label {
+    font: 1.2vh MotorBlock;
+}
+.selection [child=select], .selection.multiple [child=select] [child=optgroup] {
+    font: 1.2vh MotorBlock;
+    color:darkred;
+    background-color: white;
+}
+.selection [child=select] [child=optgroup] {
+    font: 2vh Norse;
+}
+.top-radio {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-family: MotorBlock;
+    
+}
+.radio {
+    font-family: MotorBlock;
+    font-size: 1.2vh;
+    margin:1vh;
+}
+.radio [child=area] {
+    width: 24vh;
+}
+.number {
+    font-family: MotorBlock;
+    font-size: 1.2vh;
+    width: 16vh;
+    margin: 1vh;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.5vh;
+    border-color: gray;
+    background-color: white;
+}
+.number [child=label] {
+    margin-left:0.5vh;
+    color:darkred !important;
+}
+.number [child=field] {
+    font-family: Norse;
+    font-size: 2vh;
+    font-weight: bold;
+    color:darkred;
+    border-style: solid;
+    border-width: 0px;
+    border-left-width: 2px;
+    border-color: gray;
+    background-color: white;
+}
+.number [child=field]:focus, .ssg-opt [child=field]:focus {
+    outline-style:solid;
+    outline-width: 3px;
+    outline-offset: -1px;
+    outline-color: darkred;
+}
+.generate [child=button] {
+    font-family: MotorBlock;
+    font-weight: normal;
+}
+.changelog {
     max-width: 60vw;
     height: fit-content;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5vh;
     text-align: left;
     color: white;
@@ -70,22 +230,22 @@
     padding: 2vh;
     margin-top: 4vh;
 }
-.ssg-expand:hover .changelog {
+*:hover .changelog {
     font-weight: normal;
 }
 
-.ssg-expand .changelog p, li {
+* .changelog p, li {
     color:lightgray;
 }
 
-.ssg-expand .changelog p a  {
+* .changelog p a  {
     color: orangered;
 }
 
-.ssg-expand .changelog h1 {
+* .changelog h1 {
     color: darkred;
 }
 
-.ssg-expand .changelog h2 {
-    color: white;
+* .changelog h2 {
+    color: lightgray;
 }

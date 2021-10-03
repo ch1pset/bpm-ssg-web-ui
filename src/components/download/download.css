@@ -1,22 +1,14 @@
-.gen {
+.download[child=button] {
     font-size: 4vh;
-    font-family: Norse;
     font-weight: bolder;
     color: darkred;
     background-color: white;
-    border-radius: 1.0rem;
+    border-radius: 1.5vh;
     border-style:solid;
     border-color: black;
-    border-width: 0.2rem;
+    border-width: 0.5vh;
 }
-.gen:active {
-    font-size: 4vh;
-    font-family: Norse;
-    font-weight: bolder;
+.download[child=button]:active {
     color: white;
     background-color: darkred;
-    border-radius: 1.0rem;
-    border-style:solid;
-    border-color: black;
-    border-width: 0.2rem;
 }

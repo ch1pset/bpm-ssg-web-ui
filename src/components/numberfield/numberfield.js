@@ -6,7 +6,8 @@ export class NumberField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:""
+            value:"",
+            hover:false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleHover = this.handleHover.bind(this);
@@ -23,21 +24,27 @@ export class NumberField extends React.Component {
     }
     render() {
         return (  
-            <div onPointerEnter={this.handleHover}
-                onPointerLeave={this.handleHover}
-                style={styles}>
-                <div className={this.props.className}>
-                    <label className="num-label">{`${this.props.label} :`}</label>
-                    <input className="num-field"
-                        style={{caretColor:`${this.props.hideCursor ? 'transparent' : 'inherit'}`}}
-                        placeholder={'-'}
-                        onKeyPress={(event) => {
-                            if (!/[0-9]/.test(event.key))
-                            event.preventDefault();
-                        }}
-                        onChange={this.handleChange}/>
+            <div className={this.props.className} style={styles}>
+                <div className="num" child="container" flex="column">
+                    <div flex="row" spacing="between"
+                        onPointerEnter={this.handleHover}
+                        onPointerLeave={this.handleHover}>
+                        <label className="num" child="label" flex="column" spacing="around">
+                                {`${this.props.label} :`}
+                        </label>
+                        <input className="num" child="field"
+                            style={{caretColor:`${this.props.hideCursor ? 'transparent' : 'inherit'}`}}
+                            placeholder={'-'}
+                            onKeyPress={(event) => {
+                                if (!/[0-9]/.test(event.key))
+                                event.preventDefault();
+                            }}
+                            onChange={this.handleChange}/>
+                    </div>
+                    <div child="tooltip">
+                        <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
+                    </div>
                 </div>
-                <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
             </div>
         )
     }

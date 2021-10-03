@@ -26,7 +26,6 @@ export class SSG extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             bMissingRequisites:true,
-            bTooManySelectedCurses:false,
             bTooManyStatPoints:false,
             changelog:""
         }
@@ -35,12 +34,7 @@ export class SSG extends React.Component {
         return this.state.changelog;
     }
     set Changelog(changelog) {
-        this.setState({
-            bMissingRequisites:this.state.bMissingRequisites,
-            bTooManySelectedCurses:this.state.bTooManySelectedCurses,
-            bTooManyStatPoints:this.state.bTooManyStatPoints,
-            changelog
-        })
+        this.setState({changelog})
     }
     componentDidMount() {
       fetch(`${API.gist}/${gistId}`)
@@ -81,7 +75,12 @@ export class SSG extends React.Component {
                 break;
             case 'weapon': case 'auxilary':
             case 'secondary': case 'ultimate':
-                this.context.opts[e.props.name.toUpperCase()] = e.state.selection;
+                this.context.opts[e.props.name] = e.state.selection;
+                console.log(this.context.opts);
+                break;
+            case 'head item': case 'arm item':
+            case 'chest item': case 'leg item':
+                this.context.opts[e.props.name.split(' ')[0]] = e.state.selection;
                 console.log(this.context.opts);
                 break;
             case 'curse':
@@ -94,8 +93,8 @@ export class SSG extends React.Component {
                 console.log(this.context.opts);
                 break;
             case 'ammo':
-                this.context.opts.STATS.AMMO = e.state.value;
-                console.log(this.context.opts.STATS);
+                this.context.opts.AMMO = e.state.value;
+                console.log(this.context.opts);
                 break;
             case 'ability': case 'precision':
             case 'damage': case 'luck':
@@ -106,10 +105,12 @@ export class SSG extends React.Component {
                 break;
             case 'clearall': case 'goldhealth':
             case 'small': case 'banks':
+                this.context.opts.TRAITS[e.props.name.toUpperCase()] = e.state.checked;
+                break;
             case 'noweapons': case 'nohealth':
             case 'noshops': case 'notreasure':
             case 'noarmory':
-                this.context.opts.TRAITS[e.props.name.toUpperCase()] = e.state.checked;
+                this.context.opts.TRAITS[e.props.name.toUpperCase()] = !e.state.checked;
                 break;
         }
     }
@@ -123,14 +124,12 @@ export class SSG extends React.Component {
     validate(cb) {
         let args = Object.keys(this.context);
         let stats = this.context.opts.STATS;
-        let [bMissingRequisites, bTooManySelectedCurses, bTooManyStatPoints] = [false, false, false]
+        let [bMissingRequisites, bTooManyStatPoints] = [false, false]
         args.forEach(key => {
             if(key !== 'opts' && this.context[key] === "") {
                 bMissingRequisites = true;
             }
         });
-        if(this.context.opts.CURSES.length > 4)
-            bTooManySelectedCurses = true;
         Object.keys(stats).every(s => {
             let result = stats[s] < 10
             console.log(result);
@@ -140,11 +139,10 @@ export class SSG extends React.Component {
             bTooManyStatPoints = true;
 
         this.setState({
-            bMissingRequisites, 
-            bTooManySelectedCurses,
+            bMissingRequisites,
             bTooManyStatPoints
         }, () => {
-            if(!bMissingRequisites && !bTooManySelectedCurses && !bTooManyStatPoints)
+            if(!bMissingRequisites && !bTooManyStatPoints)
                 cb();
             else {
                 let msg = "";
@@ -152,9 +150,6 @@ export class SSG extends React.Component {
                     seed:'\tSeed\n',
                     char:'\tCharacter\n',
                     diff:'\tDifficulty\n'
-                }
-                if(this.state.bTooManySelectedCurses) {
-                    msg += `Only up to 4 Curses can be selected\n\n`
                 }
                 if(this.state.bTooManyStatPoints) {
                     msg += `Stat points cannot be greater than 10\n\n`
@@ -170,54 +165,141 @@ export class SSG extends React.Component {
     render() {
         return (
             <div className="SSG" style={styles}>
-                <Dropdown className="ssg-opt" name="character" options={CHARACTERS}
-                    tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
-                <Dropdown className="ssg-opt" name="difficulty" options={DIFFICULTIES}
-                    tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
-                <SeedField className="ssg-opt" name="seed" seed={this.context.seed}
-                    tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED.join('\n')}`}
-                    onChange={this.handleChange}/>
-                <Dropdown className="ssg-opt" name="floor" options={FLOORS.map(([f, i]) => f)}
-                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
-                    onChange={this.handleChange}/>
-                <Checkbox className="ssg-opt" name="enhance" label="Enhanced Item Pools" 
-                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE.join('\n')}`}
-                    onChange={this.handleChange}/>
-                <Expander className="ssg-expand" label="Special Room Options" font='Norse' content={
-                    <div className="ssg-group">
-                        {ROOMS.map(
-                        ([name, label]) => <Checkbox className="radio" name={name} label={label} 
-                                                tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}
+                <div flex='row' spacing='around'>
+                    <div flex='column'>
+                        <div flex='row' spacing='around'>
+                            <Dropdown className="ssg-opt" name="character" options={CHARACTERS}
+                                tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
+                        </div>
+                        <div flex='row' spacing='around'>
+                            <Dropdown className="ssg-opt" name="difficulty" options={DIFFICULTIES}
+                                tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
+                        </div>
+                        <div flex='row' spacing='around'>
+                            <SeedField className="ssg-opt" name="seed" seed={this.context.seed}
+                                tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED.join('\n')}`}
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div flex='row' spacing='around'>
+                            <Dropdown className="ssg-opt" name="floor" options={FLOORS.map(([f, i]) => f)}
+                                tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
+                                onChange={this.handleChange}/>
+                        </div>
+                        <div flex='row' spacing='around' margin="bottom" pad="bottom">
+                            <Checkbox className="top-radio" boxStyle="round" name="enhance" label="Enhanced Item Pools" 
+                                tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE.join('\n')}`}
+                                onChange={this.handleChange}/>
+                        </div>
                     </div>
-                }/>
-                <Expander className="ssg-expand" label="Character/Challenge Traits" font='Norse' content={
-                    <div className="ssg-group">
-                        {TRAITS.map(
-                        ([name, label]) => <Checkbox className="radio" name={name} label={label}
-                                                tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}
+                </div>
+                <div flex='row' spacing='around' margin='bottom' pad='left-right-bottom-top'>
+                    <div className="large-group" border='solid-left-right' pad='left-right-bottom-top' margin='bottom'>
+                        <Expander className="large-expand" label='More Options' content={
+                        <div flex='row' spacing='around' >
+                            <div border='solid-top' flex='column'>
+                                <div flex='row' spacing='around'>
+                                    <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
+                                    <Expander className='ssg-expand' label='Inventory' content={
+                                        <div className="ssg-group" flex='row' spacing='between' wrap='normal' border='solid-top'>
+                                            {STATS.slice(0, 3).map(([name, label]) => (
+                                                <div flex='row' spacing='between'>
+                                                    <NumberField className="number" name={name} label={label} hideCursor={true}
+                                                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    }/>
+                                    </div>
+                                </div>
+                                <div flex='row' spacing='around'>
+                                    <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
+                                    <Expander className='ssg-expand' label='Stats' content={
+                                        <div className="ssg-group" flex='row' spacing='between' wrap='normal' border='solid-top'>
+                                            {STATS.slice(3).map(([name, label]) => (
+                                                <div flex='row' spacing='between'>
+                                                    <NumberField className="number" name={name} label={label} hideCursor={true}
+                                                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    }/>
+                                    </div>
+                                </div>
+                                <div flex='row' spacing='around'>
+                                    <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
+                                    <Expander className="ssg-expand" label="Loadout" content={
+                                        <div className="ssg-group" flex='column' border='solid-top'>
+                                            <div className='ssg-group' flex='row' spacing='between'>
+                                                <div flex='column'>
+                                                    {Object.keys(LOADOUT).slice(0, 4).map((name) => (
+                                                        <Dropdown className="selection" name={name} options={LOADOUT[name]}
+                                                            tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                ))}
+                                                </div>
+                                                <div flex='column'>
+                                                    {Object.keys(LOADOUT).slice(4, 8).map((name) => (
+                                                        <Dropdown className="selection" name={name} options={LOADOUT[name]}
+                                                            tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                ))}
+                                                </div>
+                                            </div>
+                                            <div flex='row' spacing='around'>
+                                                <div flex='column' margin='top-bottom'>
+                                                    <label className="selection label">Curses</label>
+                                                    <div flex='row' spacing='around'>
+                                                        <Dropdown className="selection multiple" name="CURSES" options={LOADOUT.CURSE}
+                                                            multiple={true} tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div flex='row' spacing='around'>
+                                                <Checkbox className="radio" boxStyle="round" name="ultcharge" label="Ultimate Charged at Start"
+                                                    tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                            </div>
+                                        </div>
+                                    }/>
+                                    </div>
+                                </div>
+                                <div flex='row' spacing='around'>
+                                    <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
+                                        <Expander className='ssg-expand' label="Special Rooms" content={
+                                            <div className="ssg-group" flex='column' border='solid-top'>
+                                                <div className="ssg-group" margin="wide-left" flex='row' spacing='between' wrap='normal'>
+                                                    {ROOMS.map(([name, label]) => (
+                                                        <Checkbox className='radio' name={name} label={label} 
+                                                            tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        }/>
+                                    </div>
+                                </div>
+                                <div flex='row' spacing='around'>
+                                    <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
+                                        <Expander className="ssg-expand" label="Special Traits" content={
+                                            <div className="ssg-group" flex='column' border='solid-top'>
+                                                <div className="ssg-group" margin="wide-left" flex='row' spacing='between' wrap='normal'>
+                                                    {TRAITS.map(([name, label]) => (
+                                                        <Checkbox className="radio" name={name} label={label}
+                                                            tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        }/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }/>
                     </div>
-                }/>
-                <Expander className="ssg-expand" label="Loadout Options" font='Norse' content={
-                    <div className="ssg-group vertical">
-                        {Object.keys(LOADOUT).map(
-                        (name) => <Dropdown className="dropdown" name={name} options={LOADOUT[name]}
-                                    multiple={name==='CURSE'} tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}                                        
-                        <Checkbox className="dropdown" name="ultcharge" label="Ultimate Charged at Start"
-                            tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
-                    </div>
-                }/>
-                <Expander className="ssg-expand" label="Stats/Inventory Options" font='Norse' content={
-                    <div className="ssg-group">
-                        {STATS.map(
-                        ([name, label]) => <NumberField className="number" name={name} label={label} hideCursor={true}
-                                                tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>)}
-                    </div>
-                }/>
-                <DownloadButton onClick={this.handleClick} label="Generate Save"/>
-                <Expander className="ssg-expand version" hideCaret={true}
-                    font='Verdana' label={`v${application.version}`} 
-                    content={<ReactMarkdown className="changelog" children={this.Changelog}/>}/>
+                </div>
+                <DownloadButton className="generate" onClick={this.handleClick} label="Generate Save"/>
+                <div flex='row' spacing='around'>
+                    <Expander className="ssg-expand version" content={
+                            <ReactMarkdown className="changelog" children={this.Changelog}/>
+                    } hideCaret={true} font='Verdana' label={`v${application.version}`}/>
+                </div>
             </div>
         )
-    }   
+    }
 }

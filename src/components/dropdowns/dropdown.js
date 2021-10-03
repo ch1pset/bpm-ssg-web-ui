@@ -28,20 +28,32 @@ export class Dropdown extends React.Component {
         })
     }
     render() {
+        // const 
         return (
             <div className={this.props.className} style={styles}>
-                <select className="Dropdown"
-                    multiple={this.props.multiple}
-                    onChange={this.handleChange}
-                    onPointerEnter={this.handleHover}
-                    onPointerLeave={this.handleHover}>
-                    <option value="">--Choose {this.props.multiple ? '':'a'} {this.props.name}--</option>
-                    {this.props.options
-                        .map((opt, i) => <option className="dropdown-option"
-                                            key={i} value={opt}>{opt}</option>)}
-                </select>
-                <Tooltip show={this.state.hover}
-                    tooltip={this.props.tooltip + (this.props.multiple ? "*`CTRL + Click` to select multiple*\n\n":'')}/>
+                <div className="dropdown" child="container">
+                    <select className="dropdown" child="select"
+                        multiple={this.props.multiple}
+                        onChange={this.handleChange}
+                        onPointerEnter={this.handleHover}
+                        onPointerLeave={this.handleHover}>
+                        <optgroup child="optgroup"
+                            label={!this.props.multiple?this.props.name:''}>
+                            <option hidden={true} value="">
+                                {`Choose a ${this.props.name}`}
+                            </option>
+                            {this.props.options.map((opt, i) => (
+                                <option key={i} value={opt}>{opt}</option>
+                            ))}
+                        </optgroup>
+                    </select>
+                </div>
+                <div className="dropdown" child="tooltip">
+                    <Tooltip show={this.state.hover} tooltip={
+                        this.props.tooltip 
+                        + (this.props.multiple ? "*`CTRL + Click` to select multiple*\n\n":''
+                    )}/>
+                </div>
             </div>
         );
     }

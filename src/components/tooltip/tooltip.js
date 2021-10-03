@@ -11,9 +11,9 @@ export class Tooltip extends React.Component {
     }
     render() {
         return (
-            <div style={Styles}>
+            <div visible={`${this.show()}`} style={Styles}>
                 <ReactMarkdown 
-                    className={`tooltip${this.show() ? '-visible': ''}`} 
+                    className="tooltip"
                     children={this.props.tooltip}/>
             </div>
         )

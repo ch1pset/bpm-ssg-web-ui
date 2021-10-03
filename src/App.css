@@ -4,6 +4,12 @@
       url(./fonts/Norse.svg),
       url(./fonts/Norse.ttf);
 }
+@font-face {
+  font-family: 'MotorBlock';
+  src: url(./fonts/MotorBlock.woff),
+      url(./fonts/MotorBlock.svg),
+      url(./fonts/MotorBlock.ttf);
+}
 
 .App {
   text-align: center;
@@ -17,7 +23,7 @@
 .Title {
   color: white;
   font-size: 4vh;
-  font-family:Norse;
+  font-family:MotorBlock;
   font-weight: bolder;
   padding-bottom: 1.5vh;
 }

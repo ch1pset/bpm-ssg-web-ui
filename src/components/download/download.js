@@ -30,9 +30,9 @@ export class DownloadButton extends React.Component {
   }
   render() {
     return (
-      <div className="Button" style={styles}>
-          <button className="gen" onClick={this.handleClick}>{this.props.label}</button>
-          <a style={{display: "none"}}
+      <div className={this.props.className} style={styles}>
+          <button className="download" child="button" onClick={this.handleClick}>{this.props.label}</button>
+          <a className="download" style={{display: "none"}}
               download={this.state.filename}
               href={this.state.url}
               ref={e=>this.dofileDownload = e}>
