@@ -1,7 +1,6 @@
 .SSG {
     text-align: center;
     justify-content: center;
-    width: 90vw;
     --dark-gray: rgb(32, 32, 32);
 }
 ::selection {
