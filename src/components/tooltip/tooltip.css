@@ -1,21 +1,20 @@
-[visible=false] {
+.tooltip[visible=false] {
     display: none;
 }
 
-[visible=true] {
-    display: inline;
+.tooltip[visible=true] {
+    display: block;
 }
 
-[child=tooltip] {
-    height: 0px;
+.tooltip[child=container] {
+    height: 0px !important;
 }
 
-
-.tooltip {
+.tooltip.content {
     z-index: 100;
     text-align: left;
     position:sticky;
-    width: 100%;
+    max-width: 100%;
     color: white;
     font-size: 1.5vh;
     font-family: monospace;
@@ -28,7 +27,7 @@
     border-radius: 2vh;
 }
 
-.tooltip li {
+.tooltip.content li {
     text-align: left;
     padding-left: 0;
     padding-top: 0;

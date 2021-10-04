@@ -1,4 +1,4 @@
-.seedfield {
+.seedfield[child=container] {
     display:flex;
     justify-content: center;
 }

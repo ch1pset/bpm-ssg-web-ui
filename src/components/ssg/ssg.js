@@ -24,11 +24,18 @@ export class SSG extends React.Component {
         super();
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleLoadChangelog = this.handleLoadChangelog.bind(this);
         this.state = {
             bMissingRequisites:true,
             bTooManyStatPoints:false,
             changelog:""
         }
+    }
+    get bMissingRequisites() {
+        return this.state.bMissingRequisites;
+    }
+    get bTooManyStatPoints() {
+        return this.state.bTooManyStatPoints;
     }
     get Changelog() {
         return this.state.changelog;
@@ -36,12 +43,13 @@ export class SSG extends React.Component {
     set Changelog(changelog) {
         this.setState({changelog})
     }
-    componentDidMount() {
-      fetch(`${API.gist}/${gistId}`)
-          .then(r => r.text())
-          .then(text => {
-            this.Changelog = JSON.parse(text).files['changelog.md'].content;
-          })
+    handleLoadChangelog(e) {
+        if(this.state.changelog === "")
+            fetch(`${API.gist}/${gistId}`)
+                .then(r => r.text())
+                .then(text => {
+                this.Changelog = JSON.parse(text).files['changelog.md'].content;
+                })
     }
     handleChange(e) {
         switch(e.props.name.toLowerCase()) {
@@ -83,7 +91,7 @@ export class SSG extends React.Component {
                 this.context.opts[e.props.name.split(' ')[0]] = e.state.selection;
                 console.log(this.context.opts);
                 break;
-            case 'curse':
+            case 'curses':
                 this.context.opts.CURSES = e.state.selection;
                 console.log(this.context.opts.CURSES);
                 break;
@@ -100,7 +108,7 @@ export class SSG extends React.Component {
             case 'damage': case 'luck':
             case 'range': case 'speed':
                 let name = e.props.name.toUpperCase();
-                this.context.opts.STATS[name] = e.state.value;
+                this.context.opts.STATS[name] = `${parseInt(e.state.value) + 1}`;
                 console.log(this.context.opts.STATS);
                 break;
             case 'clearall': case 'goldhealth':
@@ -113,19 +121,36 @@ export class SSG extends React.Component {
                 this.context.opts.TRAITS[e.props.name.toUpperCase()] = !e.state.checked;
                 break;
         }
+        this.validate();
     }
     handleClick(e) {
-        this.validate(() => {
+        if(!this.bMissingRequisites && !this.bTooManyStatPoints){
             let data = bpmssg(this.context).serialize();
             let filename = 'ContinueStateV2.sav';
             e.activateDownload({data, filename});
-        });
+        }
+        else {
+            let msg = "";
+            let args = Object.keys(this.context);
+            let arg_msg = {
+                seed:'\tSeed\n',
+                char:'\tCharacter\n',
+                diff:'\tDifficulty\n'
+            }
+            if(this.bMissingRequisites) {
+                let unset = args.map(k => this.context[k] === "" ? arg_msg[k] : '');
+                msg += `The following options are required:\n${unset.join('')}\n\n`
+            }
+            if(this.bTooManyStatPoints) {
+                msg += `Stat points other than Health/Shield cannot be greater than 9\n\n`
+            }
+            window.alert(msg);
+        }
     }
-    validate(cb) {
-        let args = Object.keys(this.context);
+    validate() {
         let stats = this.context.opts.STATS;
         let [bMissingRequisites, bTooManyStatPoints] = [false, false]
-        args.forEach(key => {
+        Object.keys(this.context).forEach(key => {
             if(key !== 'opts' && this.context[key] === "") {
                 bMissingRequisites = true;
             }
@@ -135,31 +160,12 @@ export class SSG extends React.Component {
             console.log(result);
             return result;
         })
-        if(!Object.keys(stats).every(s => stats[s] <= 10))
+        if(Object.keys(stats).some(s => stats[s] > 10))
             bTooManyStatPoints = true;
 
         this.setState({
             bMissingRequisites,
             bTooManyStatPoints
-        }, () => {
-            if(!bMissingRequisites && !bTooManyStatPoints)
-                cb();
-            else {
-                let msg = "";
-                let arg_msg = {
-                    seed:'\tSeed\n',
-                    char:'\tCharacter\n',
-                    diff:'\tDifficulty\n'
-                }
-                if(this.state.bTooManyStatPoints) {
-                    msg += `Stat points cannot be greater than 10\n\n`
-                }
-                if(this.state.bMissingRequisites) {
-                    let unset = args.map(k => this.context[k] === "" ? arg_msg[k] : '');
-                    msg += `The following options are required:\n${unset.join('')}\n\n`
-                }
-                window.alert(msg);
-            }
         });
     }
     render() {
@@ -200,7 +206,7 @@ export class SSG extends React.Component {
                                 <div flex='row' spacing='around'>
                                     <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
                                     <Expander className='ssg-expand' label='Inventory' content={
-                                        <div className="ssg-group" flex='row' spacing='between' wrap='normal' border='solid-top'>
+                                        <div className="ssg-group" flex='row' spacing='even' wrap='normal' border='solid-top'>
                                             {STATS.slice(0, 3).map(([name, label]) => (
                                                 <div flex='row' spacing='between'>
                                                     <NumberField className="number" name={name} label={label} hideCursor={true}
@@ -214,7 +220,7 @@ export class SSG extends React.Component {
                                 <div flex='row' spacing='around'>
                                     <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
                                     <Expander className='ssg-expand' label='Stats' content={
-                                        <div className="ssg-group" flex='row' spacing='between' wrap='normal' border='solid-top'>
+                                        <div className="ssg-group" flex='row' spacing='even' wrap='normal' border='solid-top'>
                                             {STATS.slice(3).map(([name, label]) => (
                                                 <div flex='row' spacing='between'>
                                                     <NumberField className="number" name={name} label={label} hideCursor={true}
@@ -264,7 +270,7 @@ export class SSG extends React.Component {
                                     <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
                                         <Expander className='ssg-expand' label="Special Rooms" content={
                                             <div className="ssg-group" flex='column' border='solid-top'>
-                                                <div className="ssg-group" margin="wide-left" flex='row' spacing='between' wrap='normal'>
+                                                <div className="ssg-group" margin="wide-left" flex='row' spacing='even' wrap='normal'>
                                                     {ROOMS.map(([name, label]) => (
                                                         <Checkbox className='radio' name={name} label={label} 
                                                             tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
@@ -278,7 +284,7 @@ export class SSG extends React.Component {
                                     <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
                                         <Expander className="ssg-expand" label="Special Traits" content={
                                             <div className="ssg-group" flex='column' border='solid-top'>
-                                                <div className="ssg-group" margin="wide-left" flex='row' spacing='between' wrap='normal'>
+                                                <div className="ssg-group" margin="wide-left" flex='row' spacing='even' wrap='normal'>
                                                     {TRAITS.map(([name, label]) => (
                                                         <Checkbox className="radio" name={name} label={label}
                                                             tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
@@ -295,8 +301,10 @@ export class SSG extends React.Component {
                 </div>
                 <DownloadButton className="generate" onClick={this.handleClick} label="Generate Save"/>
                 <div flex='row' spacing='around'>
-                    <Expander className="ssg-expand version" content={
+                    <Expander className="ssg-expand version" onExpand={this.handleLoadChangelog} content={
+                        <div flex='row' spacing='around'>
                             <ReactMarkdown className="changelog" children={this.Changelog}/>
+                        </div>
                     } hideCaret={true} font='Verdana' label={`v${application.version}`}/>
                 </div>
             </div>

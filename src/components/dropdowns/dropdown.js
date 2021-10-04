@@ -28,7 +28,6 @@ export class Dropdown extends React.Component {
         })
     }
     render() {
-        // const 
         return (
             <div className={this.props.className} style={styles}>
                 <div className="dropdown" child="container">
@@ -37,13 +36,13 @@ export class Dropdown extends React.Component {
                         onChange={this.handleChange}
                         onPointerEnter={this.handleHover}
                         onPointerLeave={this.handleHover}>
-                        <optgroup child="optgroup"
+                        <optgroup class="dropdown" child="optgroup"
                             label={!this.props.multiple?this.props.name:''}>
-                            <option hidden={true} value="">
+                            <option class="dropdown" child="option" hidden={true} value="">
                                 {`Choose a ${this.props.name}`}
                             </option>
                             {this.props.options.map((opt, i) => (
-                                <option key={i} value={opt}>{opt}</option>
+                                <option class="dropdown" child="option" key={i} value={opt}>{opt}</option>
                             ))}
                         </optgroup>
                     </select>

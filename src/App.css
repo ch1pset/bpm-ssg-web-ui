@@ -5,10 +5,11 @@
       url(./fonts/Norse.ttf);
 }
 @font-face {
-  font-family: 'MotorBlock';
-  src: url(./fonts/MotorBlock.woff),
-      url(./fonts/MotorBlock.svg),
-      url(./fonts/MotorBlock.ttf);
+    font-family: 'MotorBlock';
+    src: url(./fonts/MotorBlock.woff),
+        url(./fonts/MotorBlock.svg),
+        url(./fonts/MotorBlock.ttf);
+    unicode-range: U+30-39, U+41-5a, U+61-7a;
 }
 
 .App {

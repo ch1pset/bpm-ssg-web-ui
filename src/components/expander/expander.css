@@ -1,56 +1,63 @@
-:root {
+.expander {
     --small-spacing: 1vh;
+    --long-delay: 750ms;
+    --medium-delay: 500ms;
+    --short-delay: 250ms;
 }
-[animation=none][expand=false] {
+.expander[animation=none][expand=false] {
+    visibility: hidden;
+    transform: scale(0);
     max-height: 0px;
     max-width: 0px;
-    transform: scaleY(0);
 }
-[animation=none][expand=true] {
-    max-height: none;
-    max-width: none;
-    transform: scaleY(1);
+.expander[animation=close] {
+    animation: open-close var(--medium-delay);
 }
-[animation=close] {
-    animation: open-close 500ms;
+.expander[animation=open] {
+    animation: open-close var(--medium-delay) reverse;
 }
-[animation=open] {
-    animation: open-close 500ms reverse;
-}
-[hoverEffect=bold]:hover {
+.expander[child=label-container]:hover {
     font-weight: bold;
 }
-[direction=up] {
+.expander[child=caret][direction=up] {
     margin-top: var(--small-spacing);
 }
-[animation=rotate][direction=down]{
-    animation: rotate-180 250ms;
+.expander[child=caret][animation=rotate][direction=down]{
+    animation: rotate-180 var(--short-delay);
 }
-[animation=rotate][direction=up]{
-    animation: rotate-180 250ms;
+.expander[child=caret][animation=rotate][direction=up]{
+    animation: rotate-180 var(--short-delay);
 }
-[animation=slide][direction=down]{
-    animation: slide-down 500ms infinite;
+.expander[child=caret][animation=slide][direction=down]{
+    animation: slide-down var(--medium-delay) infinite;
 }
-[animation=slide][direction=up]{
-    animation: slide-up 500ms infinite;
+.expander[child=caret][animation=slide][direction=up]{
+    animation: slide-up var(--medium-delay) infinite;
 }
 @keyframes open-close {
     0% {
         transform: scaleY(1);
+        max-height: 100vh;
+        max-width: 100vw;
     }
-    33% {
-        transform: scaleY(0);
-    }
-    66% {
+    25% {
         transform: scaleY(0);
         max-height: 100vh;
         max-width: 100vw;
     }
+    50% {
+        transform: scaleX(1);
+        transform: scaleY(0);
+        max-height: 0px;
+        max-width: 100vw;
+        visibility: hidden;
+    }
     100% {
+        transform: scaleX(0);
         transform: scaleY(0);
         max-height: 0px;
         max-width: 0px;
+        visibility: hidden;
     }
 }
 @keyframes rotate-180 {
