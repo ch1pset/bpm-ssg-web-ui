@@ -2,6 +2,14 @@
     text-align: center;
     justify-content: center;
     --dark-gray: rgb(32, 32, 32);
+    --small-font: 1.8vh;
+    --medium-font: 2.2vh;
+    --large-font: 2.5vh;
+    --xl-font: 5vh;
+    --tiny-width: 24vh;
+    --small-width: 30vh;
+    --medium-width: 36vh;
+    --large-width: 40vh;
 }
 ::selection {
     color:white;
@@ -101,12 +109,12 @@
     margin-right: 4vh;
 }
 .large-group {
-    max-width: 85vh;
+    max-width: 80%;
     padding: 4vh;
 }
 .large-expand {
     font-family: MotorBlock, Impact;
-    font-size: 3vh;
+    font-size: var(--large-font);
     color:white;
     display: flex;
     flex-direction: column;
@@ -117,36 +125,29 @@
     flex-direction: column;
     justify-content: center;
 }
-.ssg-opt .seedfield[child=field] {
+.seedfield[child=field] {
     color: darkred;
-    max-width: 34vh;
+    width: var(--large-width);
     font-family: MotorBlock, Impact;
-    font-size: 2.2vh;
+    font-size: var(--large-font);
     font-weight: normal;
 }
-.ssg-opt [child=button]{
+.seedfield[child=button]{
+    vertical-align: middle;
     font-family: MotorBlock, Impact;
-    font-size: 2vh;
+    font-size: var(--medium-font);
     font-weight: normal;
 }
 .ssg-opt [child=select] {
-    width: 30vh !important;
+    width: var(--large-width) !important;
+    text-align: left !important;
     font-family: MotorBlock, Impact;
-    font-size: 1.8vh;
-    font-weight: bold;
+    font-size: var(--large-font);
+    font-weight: normal;
     color: darkred;
 }
-.ssg-opt 
-.dropdown[child=select]
-.dropdown[child=optgroup] {
-    font: 2.5vh Norse;
-    border-style: solid;
-    border-width: 3px;
-    border-color: darkred;
-}
 .ssg-expand {
-    font-family: MotorBlock, Impact;
-    font-size: 1.5vh;
+    font-size: var(--medium-font);
     color: white;
     margin-bottom: 1vh;
 }
@@ -154,7 +155,7 @@
     max-width: 100%;
 }
 .selection {
-    max-width: 24vh;
+    max-width: var(--large-width);
     margin: 1vh;
 }
 .selection.multiple {
@@ -162,28 +163,27 @@
     margin: 1vh;
 }
 .selection.label {
-    font: 1.2vh MotorBlock;
+    font-size: var(--medium-font);
+    font-weight: normal;
 }
 .selection
 .dropdown[child=select],
 .selection.multiple
-.dropdown[child=select]
 .dropdown[child=optgroup] {
-    font: 1.4vh MotorBlock, Impact;
-    font-variant-caps:small-caps;
+    font-family: MotorBlock, Impact;
+    font-size: var(--small-font);
+    font-weight: normal;
+    text-align: left;
     color:darkred;
     background-color: white;
 }
 .selection.multiple
 .dropdown[child=container] {
-    display: inline-block;
-    vertical-align: top;
     overflow:hidden;
     border-style: solid;
     border-width: 0px;
     border-right-width: 2px;
     border-color: black;
-    width: 100%;
     margin-left: -20px;
 }
 .selection.multiple
@@ -199,30 +199,27 @@
 .dropdown[child=option]:checked {
     box-shadow: 0 0 10px 100px darkred inset;
 }
-.selection
-.dropdown[child=select]
-.dropdown[child=optgroup] {
-    font: 2vh Norse;
-}
 .top-radio {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    font-family: MotorBlock;
-    
+    font-family: MotorBlock, Impact;
+    font-size: var(--small-font);
 }
 .radio {
-    font-family: MotorBlock;
-    font-size: 1.2vh;
+    font-family: MotorBlock, Impact;
+    font-size: var(--small-font);
+    font-weight: normal;
     margin:1vh;
 }
 .radio [child=area] {
-    width: 24vh;
+    width: var(--medium-width);
 }
 .number {
-    font-family: MotorBlock;
-    font-size: 1.2vh;
-    width: 16vh;
+    font-family: MotorBlock, Impact;
+    font-size: var(--small-font);
+    font-weight: normal;
+    width: var(--small-width);
     margin: 1vh;
     border-style: solid;
     border-width: 2px;
@@ -235,9 +232,10 @@
     color:darkred;
 }
 .number .num[child=field] {
-    font-family: MotorBlock;
-    font-size: 1.2vh;
-    max-width: 4vh;
+    font-family: MotorBlock, Impact;
+    font-size: var(--small-font);
+    font-weight: normal;
+    max-width: 10vh;
     color:darkred;
     border-style: solid;
     border-width: 0px;
@@ -245,12 +243,9 @@
     border-color: gray;
     background-color: white;
 }
-.ssg-opt
 .dropdown[child=select]:focus,
-.selection
-.dropdown[child=select]:focus,
-.number .num[child=field]:focus,
-.ssg-opt .seedfield:focus {
+.num[child=field]:focus,
+.seedfield:focus {
     outline-style:solid;
     outline-width: 3px;
     outline-offset: -1px;
@@ -258,12 +253,13 @@
 }
 .generate [child=button] {
     font-family: MotorBlock;
+    font-size: var(--xl-font);
     font-weight: normal;
 }
 .changelog {
     max-width: 80%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.5vh;
+    font-size: var(--small-font);
     text-align: left;
     color: white;
     background-color: rgba(0, 0, 0, 0.75);

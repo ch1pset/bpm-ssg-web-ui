@@ -11,7 +11,12 @@
         url(./fonts/MotorBlock.ttf);
     unicode-range: U+30-39, U+41-5a, U+61-7a;
 }
-
+@font-face {
+  font-family: 'RunyTunes';
+  src: url(./fonts/RunyTunesRevisitedNF.woff),
+      url(./fonts//RunyTunesRevisitedNF.svg),
+      url(./fonts//RunyTunesRevisitedNF.ttf);
+}
 .App {
   text-align: center;
 }
@@ -25,7 +30,6 @@
   color: white;
   font-size: 4vh;
   font-family:MotorBlock;
-  font-weight: bolder;
   padding-bottom: 1.5vh;
 }
 
