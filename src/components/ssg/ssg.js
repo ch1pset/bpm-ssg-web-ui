@@ -235,7 +235,7 @@ export class SSG extends React.Component {
                                     <div border='solid-bottom' pad='left-right-bottom-top' margin='bottom'>
                                     <Expander className="ssg-expand" label="Loadout" content={
                                         <div className="ssg-group" flex='column' border='solid-top'>
-                                            <div className='ssg-group' flex='row' spacing='between'>
+                                            <div className='ssg-group' flex='row' spacing='around' wrap="normal">
                                                 <div flex='column'>
                                                     {Object.keys(LOADOUT).slice(0, 4).map((name) => (
                                                         <Dropdown className="selection" name={name} options={LOADOUT[name]}

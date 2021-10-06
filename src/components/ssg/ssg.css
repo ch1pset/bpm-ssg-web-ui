@@ -155,11 +155,11 @@
     max-width: 100%;
 }
 .selection {
-    max-width: var(--large-width);
+    width: var(--small-width);
     margin: 1vh;
 }
 .selection.multiple {
-    width: 24vh;
+    width: var(--tiny-width);
     margin: 1vh;
 }
 .selection.label {
