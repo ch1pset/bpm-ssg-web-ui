@@ -174,20 +174,20 @@ export class SSG extends React.Component {
                 <div flex='row' spacing='around'>
                     <div flex='column'>
                         <div flex='row' spacing='around'>
-                            <Dropdown className="ssg-opt" name="character" options={CHARACTERS}
+                            <Dropdown className="ssg-opt" name="Character" options={CHARACTERS}
                                 tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
                         </div>
                         <div flex='row' spacing='around'>
-                            <Dropdown className="ssg-opt" name="difficulty" options={DIFFICULTIES}
+                            <Dropdown className="ssg-opt" name="Difficulty" options={DIFFICULTIES}
                                 tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
                         </div>
                         <div flex='row' spacing='around'>
-                            <SeedField className="ssg-opt" name="seed" seed={this.context.seed}
+                            <SeedField className="ssg-opt" name="Seed" seed={this.context.seed}
                                 tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED.join('\n')}`}
                                 onChange={this.handleChange}/>
                         </div>
                         <div flex='row' spacing='around'>
-                            <Dropdown className="ssg-opt" name="floor" options={FLOORS.map(([f, i]) => f)}
+                            <Dropdown className="ssg-opt" name="Floor" options={FLOORS.map(([f, i]) => f)}
                                 tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
                                 onChange={this.handleChange}/>
                         </div>
@@ -254,7 +254,7 @@ export class SSG extends React.Component {
                                                     <label className="selection label">Curses</label>
                                                     <div flex='row' spacing='around'>
                                                         <Dropdown className="selection multiple" name="CURSES" options={LOADOUT.CURSE}
-                                                            multiple={true} tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                                                            multiple={true} size={8} tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
                                                     </div>
                                                 </div>
                                             </div>
