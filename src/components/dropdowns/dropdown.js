@@ -33,6 +33,7 @@ export class Dropdown extends React.Component {
                 <div className="dropdown" child="container">
                     <select className="dropdown" child="select"
                         multiple={this.props.multiple}
+                        size={this.props.size}
                         onChange={this.handleChange}
                         onPointerEnter={this.handleHover}
                         onPointerLeave={this.handleHover}>
