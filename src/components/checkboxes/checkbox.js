@@ -26,18 +26,16 @@ export class Checkbox extends React.Component {
     render() {
         return (
             <div className={this.props.className} style={Styles}>
-                <div className="checkbox" child="outer-container" flex="column">
-                    <span className="checkbox" child="inner-container" flex="row" spacing="around">
-                        <span className="checkbox" child="area" flex="row" justify="left"
+                <div className="checkbox" child="outer-container">
+                    <span className="checkbox" child="inner-container">
+                        <span className="checkbox" child="area"
                             onPointerEnter={this.handleHover} 
                             onPointerLeave={this.handleHover}>
-                            <span className="checkbox" child="box-container" flex="column" spacing="around">
-                                <span className="checkbox" child="box"
-                                    boxStyle={this.props.boxStyle}
-                                    onClick={this.handleClick} 
-                                    active={`${this.state.checked}`}/>
+                            <span className="checkbox" child="box-container">
+                                <span className="checkbox" child="box" boxStyle={this.props.boxStyle}
+                                    onClick={this.handleClick} active={`${this.state.checked}`}/>
                             </span>
-                            <label className="checkbox" child="label" margin="left"
+                            <label className="checkbox" child="label"
                                 onClick={this.handleClick}>
                                 {this.props.label}
                             </label>

@@ -27,7 +27,19 @@ export class Dropdown extends React.Component {
             hover:!this.state.hover
         })
     }
+    createGroup(name, options) {
+        return (
+            <optgroup class="dropdown" child="optgroup" label={name}>
+                {options.map((opt, i) => (
+                    <option class="dropdown" child="option" key={i} value={opt}>{opt}</option>
+                ))}
+            </optgroup>
+        )
+    }
     render() {
+        const isMultiple = this.props.multiple;
+        const options = this.props.options;
+        const name = this.props.name;
         return (
             <div className={this.props.className} style={styles}>
                 <div className="dropdown" child="container">
@@ -37,15 +49,12 @@ export class Dropdown extends React.Component {
                         onChange={this.handleChange}
                         onPointerEnter={this.handleHover}
                         onPointerLeave={this.handleHover}>
-                        <optgroup class="dropdown" child="optgroup"
-                            label={!this.props.multiple?this.props.name:''}>
-                            <option class="dropdown" child="option" hidden={true} value="">
-                                {`Choose a ${this.props.name}`}
-                            </option>
-                            {this.props.options.map((opt, i) => (
-                                <option class="dropdown" child="option" key={i} value={opt}>{opt}</option>
-                            ))}
-                        </optgroup>
+                        <option class="dropdown" child="option" hidden={isMultiple?true:false} value="">
+                            {`Choose ${this.props.name}`}
+                        </option>
+                        {(options instanceof Array) ? 
+                            this.createGroup(!isMultiple?name:'',options)
+                            : Object.keys(options).map(n => this.createGroup(!isMultiple?n:'',options[n]))}
                     </select>
                 </div>
                 <div className="dropdown" child="tooltip">

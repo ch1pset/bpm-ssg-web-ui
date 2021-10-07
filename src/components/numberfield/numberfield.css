@@ -1,7 +1,13 @@
 .num[child=container] {
     width: 100%;
 }
+.num[child=area] {
+    display: flex;
+    justify-content: space-between;
+}
 .num[child=label] {
+    display: flex;
+    justify-content: space-around;
     color: white;
 }
 .num[child=field] {

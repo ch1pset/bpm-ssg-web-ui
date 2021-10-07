@@ -46,21 +46,23 @@ export class SeedField extends React.Component {
   render() {
     return (
       <div className={this.props.className} styles={styles}>
-          <div className="seedfield" child="container"
-              onPointerEnter={this.handleHover} 
-              onPointerLeave={this.handleHover}>
-            <input className="seedfield" child="field"
-                onChange={this.handleChange} 
-                placeholder="enter a seed here..."
-                value={this.state.seed}/>
-            <div className="seedfield" child="button"
-                style={styles} 
-                onClick={this.handleClick}
-                >Random</div>
-          </div>
-          <div child="tooltip">
-            <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
-          </div>
+        <div className="seedfield" child="outer-container">
+            <div className="seedfield" child="inner-container"
+                onPointerEnter={this.handleHover} 
+                onPointerLeave={this.handleHover}>
+              <input className="seedfield" child="field"
+                  onChange={this.handleChange} 
+                  placeholder="enter a seed here..."
+                  value={this.state.seed}/>
+              <div className="seedfield" child="button"
+                  style={styles} 
+                  onClick={this.handleClick}
+                  >Random</div>
+            </div>
+            <div child="tooltip">
+              <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
+            </div>
+        </div>
       </div>
     );
   }

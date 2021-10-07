@@ -1,8 +1,21 @@
 .checkbox[child=outer-container] {
+    display: flex;
+    flex-direction: column;
     max-width: 60vh;
 }
 .checkbox[child=inner-container] {
+    display: flex;
+    justify-content: space-around;
     width: 100%;
+}
+.checkbox[child=area] {
+    display: flex;
+    justify-content: left;
+}
+.checkbox[child=box-container] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .checkbox[child=box] {
     --box-size: 1.2vh;
@@ -11,6 +24,7 @@
     border-color: white;
     border-style: solid;
     border-width: 0.25vh;
+    margin-right: 1vh;
 }
 .checkbox [boxStyle=round] {
     border-radius: var(--box-size);

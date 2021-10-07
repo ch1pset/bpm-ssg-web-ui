@@ -9,9 +9,7 @@ function App() {
         <img className="logo" src={bpm_logo} alt="BPM: Bullets Per Minute logo"/>
         <p className="Title">Seeded Save Generator</p>
       </div>
-      <div>
         <SSG />
-      </div>
     </div>
   )
 }

@@ -1,8 +1,15 @@
-.seedfield[child=container] {
+.seedfield[child=outter-container] {
+    display:flex;
+    flex-direction: column;
+    max-width: 80vh;
+}
+.seedfield[child=inner-container] {
     display:flex;
     justify-content: center;
+    width: 100%;
 }
 .seedfield[child=field] {
+    vertical-align: middle;
     font-family: monospace;
     font-weight: bold;
     font-size: 2.5vh;
@@ -12,6 +19,7 @@
     background-color: white;
     padding-top: 0.25vh;
     padding-bottom: 0.25vh;
+    width:100%;
 }
 .seedfield[child=button] {
     cursor:default;

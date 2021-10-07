@@ -25,11 +25,11 @@ export class NumberField extends React.Component {
     render() {
         return (  
             <div className={this.props.className} style={styles}>
-                <div className="num" child="container" flex="column">
-                    <div flex="row" spacing="between"
+                <div className="num" child="container">
+                    <div className="num" child="area"
                         onPointerEnter={this.handleHover}
                         onPointerLeave={this.handleHover}>
-                        <label className="num" child="label" flex="column" spacing="around">
+                        <label className="num" child="label">
                                 {`${this.props.label} :`}
                         </label>
                         <input className="num" child="field"
