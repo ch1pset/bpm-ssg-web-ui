@@ -7,6 +7,8 @@ const SsgContext = React.createContext({
     opts:{
         CURSES:[],
         STATS: {},
+        ABILITIES: {},
+        ITEMS: {},
         TRAITS: {}
     }
 });

@@ -1,10 +1,14 @@
 {
-    "CHARACTERS": [
-        "Goll", "Freyr", "Hildr", "Njord", "Odr",
-        "Skuld", "Geri", "Herfjoter", "Run", "Sanngridr"
-    ],
-    "CHALLENGES": [
-    ],
+    "ARCHETYPES": {
+        "CHARACTERS": [
+            "Goll", "Freyr", "Hildr", "Njord", "Odr",
+            "Skuld", "Geri", "Herfjoter", "Run", "Sanngridr"
+        ],
+        "CHALLENGES": [
+            "Retro Run", "Full Auto", "Floor Is Lava", "Supertime",
+            "No Shop Or Treasure", "Pistol Only"
+        ]
+    },
     "DIFFICULTIES": [
         "Easy", "Hard", "Hellish", "Practice"
     ],
@@ -49,8 +53,10 @@
             "Dash(Supertime)"
         ],
         "ABILITIES": {
+            "OTHER": [
+                "None"
+            ],
             "SECONDARY": [
-                "None",
                 "Block",
                 "Broken Burst",
                 "Burning Coin",
@@ -68,7 +74,6 @@
                 "Valkyrie's Veil"
             ],
             "ULTIMATE": [
-                "None",
                 "Banking",
                 "Barter",
                 "Elli's Touch",
@@ -84,9 +89,7 @@
                 "Sigyn's Help",
                 "The Quest",
                 "Valkyrie's Call"
-            ]
-        },
-        "ITEMS": {
+            ],
             "HEAD ITEM": [
                 "Adventurer's Fedora",
                 "Circlet of the Serpentine",
@@ -225,7 +228,7 @@
             "\t* No \"FloorSeeds\" are generated",
             "\t* Special Room and Item randomization seeded with a value of 0"
         ],
-        "ULTCHARGE": "Player starts game with ultimate ability charged",
+        "CHARGE": "Player starts game with secondary and ultimate abilities charged",
         "REQUIRED": "*Required*\n\n",
         "OPTIONAL": "*Optional*\n\n"
     }
