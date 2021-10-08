@@ -27,38 +27,42 @@ export class Dropdown extends React.Component {
             hover:!this.state.hover
         })
     }
-    createGroup(name, options) {
+    static create({name, className, options, multiple, size, tooltip, onChange}) {
+        if(name !== "OTHER") return (
+            <Dropdown className={className} name={name} multiple={multiple} size={size}
+                options={options}
+                tooltip={tooltip}
+                onChange={onChange}/>
+        )
+    }
+    static optgroups(groups) {
+        return Object.keys(groups).map(n => this.options(n, groups[n]));
+    }
+    static options(name, options) {
         return (
             <optgroup class="dropdown" child="optgroup" label={name}>
-                {options.map((opt, i) => (
-                    <option class="dropdown" child="option" key={i} value={opt}>{opt}</option>
-                ))}
+                {options.map((o, i) =>
+                    <option class="dropdown" child="option" key={i} value={o}>{o}</option>)}
             </optgroup>
-        )
+        );
     }
     render() {
         const isMultiple = this.props.multiple;
-        const options = this.props.options;
-        const name = this.props.name;
         return (
-            <div className={this.props.className} style={styles}>
+            <div className={this.props.className} child="parent" style={styles}>
                 <div className="dropdown" child="container">
                     <select className="dropdown" child="select"
                         multiple={this.props.multiple}
                         size={this.props.size}
-                        onChange={this.handleChange}
-                        onPointerEnter={this.handleHover}
-                        onPointerLeave={this.handleHover}>
+                        onChange={this.handleChange}>
                         <option class="dropdown" child="option" hidden={isMultiple?true:false} value="">
                             {`Choose ${this.props.name}`}
                         </option>
-                        {(options instanceof Array) ? 
-                            this.createGroup(!isMultiple?name:'',options)
-                            : Object.keys(options).map(n => this.createGroup(!isMultiple?n:'',options[n]))}
+                        {this.props.options}
                     </select>
                 </div>
                 <div className="dropdown" child="tooltip">
-                    <Tooltip show={this.state.hover} tooltip={
+                    <Tooltip tooltip={
                         this.props.tooltip 
                         + (this.props.multiple ? "*`CTRL + Click` to select multiple*\n\n":''
                     )}/>

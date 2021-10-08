@@ -105,6 +105,10 @@
     width: var(--small-width);
     margin: 1vh;
 }
+.selection
+.dropdown[child=optgroup] {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 .selection.multiple {
     align-self: center;
 }

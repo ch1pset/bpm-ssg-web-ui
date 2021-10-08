@@ -11,7 +11,7 @@ import Expander from '../expander';
 import SsgContext from './context';
 import NumberField from '../numberfield';
 import { 
-    CHARACTERS, DIFFICULTIES, FLOORS, 
+    ARCHETYPES, DIFFICULTIES, FLOORS, 
     LOADOUT, TOOLTIP, STATS, ROOMS, TRAITS 
 } from './data.json'
 import API from '../../api';
@@ -52,12 +52,14 @@ export class SSG extends React.Component {
                 })
     }
     handleChange(e) {
-        switch(e.props.name.toLowerCase()) {
+        const name = e.props.name;
+        const opts = this.context.opts;
+        switch(name.toLowerCase()) {
             case 'seed':
                 this.context.seed = e.state.seed;
-                this.context.opts.NULLSEED = false;
+                opts.NULLSEED = false;
                 if(this.context.seed.toUpperCase() === 'NULL')
-                    this.context.opts.NULLSEED = true;
+                    opts.NULLSEED = true;
         
                 console.log(this.context);
                 break;
@@ -71,54 +73,58 @@ export class SSG extends React.Component {
                 break;
             case 'floor':
                 let floor = FLOORS.find(([f, i]) => f === e.state.selection);
-                this.context.opts.FLOORINDEX = floor!==undefined ? floor[1] : 0;
-                console.log(this.context.opts);
+                opts.FLOORINDEX = floor!==undefined ? floor[1] : 0;
+                console.log(opts);
                 break;
             case 'enhance': case 'choice':
             case 'stairs': case 'prestige':
             case 'blackmarket': case 'portal':
-            case 'ultcharge':
-                this.context.opts[e.props.name.toUpperCase()] = e.state.checked;
-                console.log(this.context.opts)
+            case 'charge':
+                opts[name.toUpperCase()] = e.state.checked;
+                console.log(opts)
                 break;
-            case 'weapon': case 'auxilary':
+            case 'weapon': case 'mobility':
+                opts[name] = e.state.selection;
+                console.log(opts);
+                break;
             case 'secondary': case 'ultimate':
-                this.context.opts[e.props.name] = e.state.selection;
-                console.log(this.context.opts);
+                opts.ABILITIES[name] = e.state.selection;
+                console.log(opts.ABILITIES);
                 break;
             case 'head item': case 'arm item':
             case 'chest item': case 'leg item':
-                this.context.opts[e.props.name.split(' ')[0]] = e.state.selection;
-                console.log(this.context.opts);
+                opts.ITEMS[name.split(' ')[0]] = e.state.selection;
+                console.log(opts.ITEMS);
                 break;
             case 'curses':
-                this.context.opts.CURSES = e.state.selection;
-                console.log(this.context.opts.CURSES);
+                opts.CURSES = e.state.selection;
+                console.log(opts.CURSES);
                 break;
             case 'health': case 'shield':
             case 'coins': case 'keys':
-                this.context.opts[e.props.name.toUpperCase()] = e.state.value;
-                console.log(this.context.opts);
+                opts[name.toUpperCase()] = e.state.value;
+                console.log(opts);
                 break;
             case 'ammo':
-                this.context.opts.AMMO = e.state.value;
-                console.log(this.context.opts);
+                opts.AMMO = e.state.value;
+                console.log(opts);
                 break;
             case 'ability': case 'precision':
             case 'damage': case 'luck':
             case 'range': case 'speed':
-                let name = e.props.name.toUpperCase();
-                this.context.opts.STATS[name] = `${parseInt(e.state.value) + 1}`;
-                console.log(this.context.opts.STATS);
+                opts.STATS[name.toUpperCase()] = `${parseInt(e.state.value) + 1}`;
+                console.log(opts.STATS);
                 break;
             case 'clearall': case 'goldhealth':
             case 'small': case 'banks':
-                this.context.opts.TRAITS[e.props.name.toUpperCase()] = e.state.checked;
+                opts.TRAITS[name.toUpperCase()] = e.state.checked;
                 break;
             case 'noweapons': case 'nohealth':
             case 'noshops': case 'notreasure':
             case 'noarmory':
-                this.context.opts.TRAITS[e.props.name.toUpperCase()] = !e.state.checked;
+                opts.TRAITS[name.toUpperCase()] = !e.state.checked;
+                break;
+            default:
                 break;
         }
         this.validate();
@@ -144,7 +150,7 @@ export class SSG extends React.Component {
             if(this.bTooManyStatPoints) {
                 msg += `Stat points other than Health/Shield cannot be greater than 9\n\n`
             }
-            window.alert(msg);
+            alert(msg);
         }
     }
     validate() {
@@ -172,25 +178,43 @@ export class SSG extends React.Component {
         const LOADOUT_OPTIONS = (
             <div className="group md">
                 <div id="items">
-                {Object.keys(LOADOUT).slice(0, 2).map((name) => (
-                    <Dropdown className="selection" name={name} options={LOADOUT[name]}
-                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>))}
+                    <div>
+                    <Dropdown name="WEAPON" className="selection"
+                        options={Dropdown.options("WEAPON",LOADOUT.WEAPON)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    <Dropdown name="MOBILITY" className="selection"
+                        options={Dropdown.options("MOBILITY", LOADOUT.AUXILARY)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    <Dropdown name="SECONDARY" className="selection"
+                        options={Dropdown.optgroups(LOADOUT.ABILITIES)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    <Dropdown name="ULTIMATE" className="selection"
+                        options={Dropdown.optgroups(LOADOUT.ABILITIES)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    </div>
+                    <div>
+                    <Dropdown name="HEAD ITEM" className="selection"
+                        options={Dropdown.optgroups(LOADOUT.ABILITIES)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    <Dropdown name="ARM ITEM" className="selection"
+                        options={Dropdown.optgroups(LOADOUT.ABILITIES)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    <Dropdown name="CHEST ITEM" className="selection"
+                        options={Dropdown.optgroups(LOADOUT.ABILITIES)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    <Dropdown name="LEG ITEM" className="selection"
+                        options={Dropdown.optgroups(LOADOUT.ABILITIES)}
+                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                    </div>
                 </div>
-                <div id="items">
-                {Object.keys(LOADOUT.ABILITIES).map((name) => (
-                    <Dropdown className="selection" name={name} options={LOADOUT.ABILITIES}
-                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>))}
-                </div>
-                {Object.keys(LOADOUT.ITEMS).map((name) => (
-                    <Dropdown className="selection" name={name} options={LOADOUT.ITEMS}
-                        tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>))}
-                <Checkbox className="radio" boxStyle="round" name="ultcharge"
-                    label="Charge Ultimate" tooltip={TOOLTIP.OPTIONAL+TOOLTIP.ULTCHARGE}
+                <Checkbox className="radio" boxStyle="round" name="charge"
+                    label="Charge Abilities" tooltip={TOOLTIP.OPTIONAL+TOOLTIP.CHARGE}
                     onChange={this.handleChange}/>
                 <label className="selection label">Curses</label>
-                <Dropdown className="selection multiple" name="CURSES"
-                    options={LOADOUT.CURSE} multiple={true} size={8}
-                    tooltip={TOOLTIP.OPTIONAL} onChange={this.handleChange}/>
+                <Dropdown name="CURSES" className="selection multiple"
+                    options={Dropdown.options("", LOADOUT.CURSE)}
+                    multiple={true} size={8} tooltip={TOOLTIP.OPTIONAL}
+                    onChange={this.handleChange}/>
             </div>
         );
         const MORE_OPTIONS = (
@@ -205,8 +229,7 @@ export class SSG extends React.Component {
                         <NumberField className="number" name={name} label={label}
                             hideCursor={true} tooltip={TOOLTIP.OPTIONAL}
                             onChange={this.handleChange}/>))}/>
-                <Expander id="loadout" className="expand md" label="Loadout"
-                    content={LOADOUT_OPTIONS}/>
+                <Expander id="loadout" className="expand md" label="Loadout" content={LOADOUT_OPTIONS}/>
                 <Expander id="rooms" className='expand md' label="Special Rooms" 
                     content={ROOMS.map(([name, label]) => (
                         <Checkbox className='radio' name={name} label={label} 
@@ -219,22 +242,23 @@ export class SSG extends React.Component {
         );
         return (
             <div className="SSG" style={styles}>
-                <Dropdown className="ssg-opt" name="Character" options={CHARACTERS}
+                <Dropdown name="Character" className="ssg-opt"
+                    options={Dropdown.optgroups(ARCHETYPES)}
                     tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
-                <Dropdown className="ssg-opt" name="Difficulty" options={DIFFICULTIES}
+                <Dropdown name="Difficulty" className="ssg-opt"
+                    options={Dropdown.options("Difficulty", DIFFICULTIES)}
                     tooltip={TOOLTIP.REQUIRED} onChange={this.handleChange}/>
                 <SeedField className="ssg-opt" name="Seed" seed={this.context.seed}
                     tooltip={`${TOOLTIP.REQUIRED}${TOOLTIP.SEED.join('\n')}`}
                     onChange={this.handleChange}/>
-                <Dropdown className="selection" name="Floor" options={FLOORS.map(([f, i]) => f)}
-                    tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.FLOOR}`}
-                    onChange={this.handleChange}/>
+                <Dropdown name="Floor" className="selection"
+                    options={Dropdown.options("Floor", FLOORS.map(([f, i]) => f))}
+                    tooltip={TOOLTIP.OPTIONAL+TOOLTIP.FLOOR} onChange={this.handleChange}/>
                 <Checkbox className="top-radio" boxStyle="round" name="enhance"
-                    label="Enhanced Item Pools" 
+                    label="Enhanced Item Pools"
                     tooltip={`${TOOLTIP.OPTIONAL}${TOOLTIP.ENHANCE.join('\n')}`}
                     onChange={this.handleChange}/>
-                <Expander id="more" className="expand lg" label='More Options' 
-                    content={MORE_OPTIONS}/>
+                <Expander id="more" className="expand lg" label='More Options' content={MORE_OPTIONS}/>
                 <DownloadButton className="generate" onClick={this.handleClick} label="Generate Save"/>
                 <Expander id="version" className="expand md" onExpand={this.handleLoadChangelog}
                     content={<ReactMarkdown className="changelog" children={this.Changelog}/>} 
