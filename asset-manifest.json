@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.119440d1.chunk.css",
-    "main.js": "./static/js/main.2fe5fb33.chunk.js",
-    "main.js.map": "./static/js/main.2fe5fb33.chunk.js.map",
+    "main.css": "./static/css/main.6a350a8c.chunk.css",
+    "main.js": "./static/js/main.d00b44fc.chunk.js",
+    "main.js.map": "./static/js/main.d00b44fc.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.f0adae91.js",
     "runtime-main.js.map": "./static/js/runtime-main.f0adae91.js.map",
-    "static/js/2.ea991213.chunk.js": "./static/js/2.ea991213.chunk.js",
-    "static/js/2.ea991213.chunk.js.map": "./static/js/2.ea991213.chunk.js.map",
+    "static/js/2.c9c68518.chunk.js": "./static/js/2.c9c68518.chunk.js",
+    "static/js/2.c9c68518.chunk.js.map": "./static/js/2.c9c68518.chunk.js.map",
     "static/js/3.d4bd24fa.chunk.js": "./static/js/3.d4bd24fa.chunk.js",
     "static/js/3.d4bd24fa.chunk.js.map": "./static/js/3.d4bd24fa.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.119440d1.chunk.css.map": "./static/css/main.119440d1.chunk.css.map",
-    "static/js/2.ea991213.chunk.js.LICENSE.txt": "./static/js/2.ea991213.chunk.js.LICENSE.txt",
+    "static/css/main.6a350a8c.chunk.css.map": "./static/css/main.6a350a8c.chunk.css.map",
+    "static/js/2.c9c68518.chunk.js.LICENSE.txt": "./static/js/2.c9c68518.chunk.js.LICENSE.txt",
     "static/media/App.css": "./static/media/RunyTunesRevisitedNF.5e115dd8.woff",
     "static/media/index.css": "./static/media/NoHUD_Helheim1.c4eefbe1.png",
     "static/media/bpm_logo_1x1.96a7124c.png": "./static/media/bpm_logo_1x1.96a7124c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f0adae91.js",
-    "static/js/2.ea991213.chunk.js",
-    "static/css/main.119440d1.chunk.css",
-    "static/js/main.2fe5fb33.chunk.js"
+    "static/js/2.c9c68518.chunk.js",
+    "static/css/main.6a350a8c.chunk.css",
+    "static/js/main.d00b44fc.chunk.js"
   ]
 }
