@@ -38,7 +38,7 @@
     border-color: var(--transparent-gray);
 }
 .expand.lg {
-    max-width: 70%;
+    max-width: 66%;
     padding: 4vh;
     margin-block: 3vh;
     font-family: MotorBlock, Impact;

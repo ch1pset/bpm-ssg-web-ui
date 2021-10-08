@@ -6,11 +6,9 @@ export class NumberField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:"",
-            hover:false
+            value:""
         }
         this.handleChange = this.handleChange.bind(this);
-        this.handleHover = this.handleHover.bind(this);
     }
     change(value, hover, cb) {
         this.setState({value, hover}, cb);
@@ -19,16 +17,11 @@ export class NumberField extends React.Component {
         this.change(e.target.value, this.state.hover, 
             () => this.props.onChange(this));
     }
-    handleHover(e) {
-        this.change(this.state.value, !this.state.hover);
-    }
     render() {
         return (  
-            <div className={this.props.className} style={styles}>
+            <div className={this.props.className} child="parent" style={styles}>
                 <div className="num" child="container">
-                    <div className="num" child="area"
-                        onPointerEnter={this.handleHover}
-                        onPointerLeave={this.handleHover}>
+                    <div className="num" child="area">
                         <label className="num" child="label">
                                 {`${this.props.label} :`}
                         </label>

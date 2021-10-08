@@ -5,32 +5,26 @@ import Styles from './checkbox.css';
 export class Checkbox extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {checked:false, hover:false};
+        this.state = {checked:false};
         this.handleClick = this.handleClick.bind(this);
-        this.handleHover = this.handleHover.bind(this);
     }
-    change(checked, hover, cb) {
-        this.setState({checked, hover}, cb);
+    change(checked, cb) {
+        this.setState({checked}, cb);
     }
     toggleTooltip(cb) {
-        this.change(this.state.checked, !this.state.hover, cb);
+        this.change(this.state.checked, cb);
     }
     handleClick(e) {
-        console.log(`${!this.state.checked ? 'Selected' : 'Unselected'} ${this.props.name}`)
-        this.change(!this.state.checked, this.state.hover,
+        console.log(`${!this.state.checked ? 'Selected' : 'Unselected'} ${this.props.name}`);
+        this.change(!this.state.checked,
             () => this.props.onChange(this));
-    }
-    handleHover(e) {
-        this.toggleTooltip();
     }
     render() {
         return (
-            <div className={this.props.className} style={Styles}>
+            <div className={this.props.className} child="parent" style={Styles}>
                 <div className="checkbox" child="outer-container">
                     <span className="checkbox" child="inner-container">
-                        <span className="checkbox" child="area"
-                            onPointerEnter={this.handleHover} 
-                            onPointerLeave={this.handleHover}>
+                        <span className="checkbox" child="area">
                             <span className="checkbox" child="box-container">
                                 <span className="checkbox" child="box" boxStyle={this.props.boxStyle}
                                     onClick={this.handleClick} active={`${this.state.checked}`}/>
@@ -42,7 +36,7 @@ export class Checkbox extends React.Component {
                         </span>
                     </span>
                     <div className="checkbox" child="tooltip">
-                        <Tooltip show={this.state.hover} tooltip={this.props.tooltip}/>
+                        <Tooltip tooltip={this.props.tooltip}/>
                     </div>
                 </div>
             </div>

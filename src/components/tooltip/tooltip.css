@@ -1,9 +1,10 @@
+[child=parent] .tooltip,
 .tooltip[visible=false] {
-    display: none;
+    visibility: hidden;
 }
-
-.tooltip[visible=true] {
-    display: block;
+[child=parent]:focus-within .tooltip,
+[child=parent]:active .tooltip {
+    visibility: visible;
 }
 
 .tooltip[child=container] {

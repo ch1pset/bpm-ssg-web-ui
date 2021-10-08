@@ -5,27 +5,19 @@ import styles from './dropdowns.css';
 export class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {selection:[],hover:false}
+        this.state = {selection:[]}
         this.handleChange = this.handleChange.bind(this);
-        this.handleHover = this.handleHover.bind(this);
     }
     handleChange(e) {
         let selected = e.target.selectedOptions;
         this.setState({
             selection:this.props.multiple ? 
                 Object.keys(selected).filter(s => selected[s].value !== "").map(k => selected[k].value)
-                : e.target.value,
-            hover:this.state.hover
+                : e.target.value
         }, () => {
             console.log(`Selected ${this.state.selection.toString()}`)
             this.props.onChange(this)
         });
-    }
-    handleHover(e) {
-        this.setState({
-            selection:this.state.selection,
-            hover:!this.state.hover
-        })
     }
     static create({name, className, options, multiple, size, tooltip, onChange}) {
         if(name !== "OTHER") return (

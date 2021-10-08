@@ -6,34 +6,24 @@ import Tooltip from '../tooltip';
 export class SeedField extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {seed:"", hover:false}
+    this.state = {seed:""}
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleHover = this.handleHover.bind(this);
   }
   handleChange(e) {
     this.setState({
-      seed:e.target.value,
-      hover:this.state.hover
+      seed:e.target.value
     }, () => this.props.onChange(this));
   }
   handleClick(e) {
     this.setState({
-      seed:this.genSeed(Date.now()),
-      hover:this.state.hover
+      seed:this.genSeed(Date.now())
     }, () => {
       this.setState({
-        seed:this.state.seed,
-        hover:this.state.hover
+        seed:this.state.seed
       });
       this.props.onChange(this);
     });
-  }
-  handleHover() {
-    this.setState({
-      seed:this.state.seed,
-      hover:!this.state.hover
-    })
   }
   genSeed(seed)
   {
@@ -45,11 +35,9 @@ export class SeedField extends React.Component {
   }
   render() {
     return (
-      <div className={this.props.className} styles={styles}>
+      <div className={this.props.className} child="parent" styles={styles}>
         <div className="seedfield" child="outer-container">
-            <div className="seedfield" child="inner-container"
-                onPointerEnter={this.handleHover} 
-                onPointerLeave={this.handleHover}>
+            <div className="seedfield" child="inner-container">
               <input className="seedfield" child="field"
                   onChange={this.handleChange} 
                   placeholder="enter a seed here..."
